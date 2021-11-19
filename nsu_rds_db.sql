@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 06:28 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Nov 19, 2021 at 04:12 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,6 +40,25 @@ CREATE TABLE `admins` (
 INSERT INTO `admins` (`ID`, `USERNAME`, `PASSWORD`) VALUES
 (1, 'admin', 'admin');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `ID` int(5) NOT NULL,
+  `USERNAME` int(11) NOT NULL,
+  `PASSWORD` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`ID`, `USERNAME`, `PASSWORD`) VALUES
+(1, 1911110642, '12345');
+
 --
 -- Indexes for dumped tables
 --
@@ -52,6 +71,12 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `USERNAME` (`USERNAME`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -59,6 +84,12 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
   MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 

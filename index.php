@@ -3,10 +3,18 @@
     require 'app.php'; // load the application
 
     function trying_to_login_student($username){ // all is int
+      
+        if(ctype_digit($username)){
+            return true;
+        }
+
         return false;
+
     }
 
     function trying_to_login_faculty($username){ // check if user exists in the faculty table 
+
+        
         return false;
     }
 
@@ -19,6 +27,23 @@
         // go through the respective login functions
 
         if(trying_to_login_student($username)){
+                
+            $result = $APP_DB->query("SELECT count(*) as count FROM students WHERE username='$username' AND password='$password';");
+            $how_many = $result->fetch_object()->count;
+        
+            if($how_many == 1 ){
+
+                $result = $APP_DB->query("SELECT ID FROM students WHERE username='$username' AND password='$password';");
+                $logged_user_id = $result->fetch_assoc()['ID'];
+
+                setcookie('logged_user', $username, time() + (86400 * 30));
+                setcookie('user_role', 2, time() + (86400 * 30)); // admin = 0, faculty = 1, student = 2
+                setcookie('user_id', $logged_user_id, time() + (86400 * 30));
+
+            }
+            else{
+                echo "Authentication error!";
+            }
 
         }else if(trying_to_login_faculty($username)){
 

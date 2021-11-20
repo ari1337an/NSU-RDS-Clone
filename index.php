@@ -41,6 +41,9 @@
                 setcookie('user_role', 2, time() + (86400 * 30)); // admin = 0, faculty = 1, student = 2
                 setcookie('user_id', $logged_user_id, time() + (86400 * 30));
 
+                header("Location: ./student/index.php");
+                exit;
+
             }
             else{
                 echo "Authentication error!";
@@ -63,6 +66,8 @@
 
                 // finished login process now redirect to the dashboard/admin panel
                 //header('Refresh: 0, url = ./admin/index.php');
+                header("Location: ./faculty/index.php");
+                exit;
             }else{
                 echo "Authentication Error!";
             }
@@ -84,7 +89,9 @@
                 setcookie('user_id', $logged_user_id, time() + (86400 * 30));
 
                 // finished login process now redirect to the dashboard/admin panel
-                //header('Refresh: 0, url = ./admin/index.php');
+                // header('Refresh: 0, url = ./admin/index.php');
+                header("Location: ./admin/index.php");
+                exit;
             }else{
                 echo "Authentication Error!";
             }

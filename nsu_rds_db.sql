@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2021 at 04:12 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.3.29
+-- Generation Time: Nov 20, 2021 at 04:51 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,6 +43,25 @@ INSERT INTO `admins` (`ID`, `USERNAME`, `PASSWORD`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faculties`
+--
+
+CREATE TABLE `faculties` (
+  `ID` int(5) NOT NULL,
+  `USERNAME` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `PASSWORD` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `faculties`
+--
+
+INSERT INTO `faculties` (`ID`, `USERNAME`, `PASSWORD`) VALUES
+(1, 'MKN1', '123456789');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -71,6 +90,13 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `USERNAME` (`USERNAME`);
 
 --
+-- Indexes for table `faculties`
+--
+ALTER TABLE `faculties`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `USERNAME` (`USERNAME`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -84,6 +110,12 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `faculties`
+--
+ALTER TABLE `faculties`
   MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

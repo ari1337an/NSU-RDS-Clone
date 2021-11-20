@@ -5,3 +5,4 @@ if(isset($_COOKIE['user_id'])){
 }else{
     echo "you didnt login";
 }
+?>

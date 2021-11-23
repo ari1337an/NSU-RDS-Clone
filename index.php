@@ -93,8 +93,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             echo "Authentication Error!";
         }
     }
-} else {
-}
+} 
+
+// Define the Template Variables
+$template_vars["get_hierarchy"] = "./"; // take the script to the main hierarchy
 
 ?>
 <!DOCTYPE html>
@@ -107,15 +109,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="include/css/styles.css">
+    <link rel="stylesheet" href="./src/css/styles.css">
     <title>Welcome</title>
 </head>
 
 <body>
-    <?php
-    global $imageLocation;
-    $imageLocation = 'include/img/logo-wide.png';
-    include 'template/header.php' ?>
+    <?php include 'template/header.php'; ?>
     <form action="index.php" method="post">
         Username: <input type="text" name="username"> <br>
         Password: <input type="password" name="password"> <br>

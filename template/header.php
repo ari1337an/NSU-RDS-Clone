@@ -1,7 +1,23 @@
-<div class="header">
-  <a href="#" class="nsu-logo"><?php echo "<img src=$imageLocation>";?></a>
-  <div class="header-right">
-    <a href="#about">About</a>
-  </div>
+<header>
 
-</div>
+  <div class="primary-header">
+    <a href="<?php echo $template_vars["get_hierarchy"];?>" class="nsu-logo">
+      <img src="<?php echo $template_vars["get_hierarchy"];?>src/img/logo-wide.png" alt="" srcset="">
+    </a>
+    <div class="header-right">
+    <?php
+    if(USERS::isLogged()){
+      ?>
+        <a href="#profile">Welcome, <?php echo $_COOKIE['logged_user']; ?></a>
+      <?php 
+    }else{
+      ?>
+        <a href="#about">About</a>
+      <?php
+    }
+    ?>
+    </div>
+  </div>
+ 
+    
+</header>

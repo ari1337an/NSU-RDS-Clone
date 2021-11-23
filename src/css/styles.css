@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Style the header with a grey background and some padding */
+
+header {
+  padding: 10px;
+  /* padding-bottom: 10px; */
+  margin-bottom: 10px;
+  size: 100%;
+  height: 70px;
+  background-color: #06265f;
+  /* padding: 20px 10px; */
+}
+
+.nsu-logo img {
+  width: 380px;
+  height: 70px;
+  object-fit: contain;
+  padding-left: 100px;
+  align-self: center;
+}
+
+.header-right {
+  float: right;
+  margin: 22px;
+  font-size: 22px;
+}
+
+.header-right a {
+  color: #fff;
+}

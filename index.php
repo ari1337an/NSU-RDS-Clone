@@ -115,11 +115,22 @@ $template_vars["get_hierarchy"] = "./"; // take the script to the main hierarchy
 
 <body>
     <?php include 'template/header.php'; ?>
-    <form action="index.php" method="post">
-        Username: <input type="text" name="username"> <br>
-        Password: <input type="password" name="password"> <br>
-        <input type="submit">
-    </form>
+
+    <div class="login-center">
+        <h3>NSU Portal: Login</h3>
+        <form action="index.php" method="post">
+            <div class="input-field">
+                <label>Username</label>
+                <input type="text" name="username" required>
+            </div>
+            <div class="input-field">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    
 </body>
 
 </html>

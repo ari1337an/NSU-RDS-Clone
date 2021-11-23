@@ -35,3 +35,58 @@ header {
 .header-right a {
   color: #fff;
 }
+
+/* The Login Page Form */
+.login-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 739px;
+  height: 428px;
+  background: #06265f;
+}
+
+.login-center h3 {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  line-height: 37.5px;
+  color: #ffdb5b;
+  margin-top: 32px;
+  margin-left: 120px;
+}
+
+.login-center label {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 25px;
+  line-height: 37px;
+  color: #ffffff;
+}
+
+.input-field {
+  padding-top: 30px;
+  padding-left: 120px;
+}
+
+.login-center input[type="text"],
+input[type="password"] {
+  width: 350px;
+  height: 40px;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 22px;
+}
+
+.login-center input[type="submit"] {
+  position: absolute;
+  width: 139px;
+  height: 56px;
+  background: #1388ad;
+  color: #ffffff;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+}

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Incldue this file once and it will auto include all library and configurations
 

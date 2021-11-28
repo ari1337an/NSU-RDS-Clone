@@ -6,16 +6,13 @@
   font-family: "Roboto", sans-serif;
 }
 
-/* Style the header with a grey background and some padding */
+/* header form */
 
-header {
+.primary-header {
   padding: 10px;
-  /* padding-bottom: 10px; */
-  margin-bottom: 10px;
-  size: 100%;
+  margin-bottom: 2px;
   height: 70px;
   background-color: #06265f;
-  /* padding: 20px 10px; */
 }
 
 .nsu-logo img {
@@ -29,12 +26,47 @@ header {
 .header-right {
   float: right;
   margin: 22px;
-  font-size: 22px;
+  font-size: 18px;
+  margin-right: 80px;
 }
 
 .header-right a {
   color: #fff;
 }
+
+
+
+/* Sub-header form */
+
+.primary-sub-header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 200;
+  background-color: #EBEBEB;
+}
+#Student{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 5px;
+}
+
+#Student li {
+  width: 150px;
+  margin: 15px;
+  padding: 15px;
+  background-color: #C4C4C4;
+}
+.active, #Student li:hover{
+  background-color: #A0B8BF;
+}
+#Student a {
+  color: #000;
+}
+
+
+
+
 
 /* The Login Page Form */
 .login-center {

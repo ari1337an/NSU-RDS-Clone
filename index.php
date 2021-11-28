@@ -116,6 +116,9 @@ $template_vars["get_hierarchy"] = "./"; // take the script to the main hierarchy
 <body>
     <?php include 'template/header.php'; ?>
 
+    <!-- just to check if the subheader works -->
+    <!-- <?php include 'template/sub_header.php'; ?>  -->
+
     <div class="login-center">
         <h3>NSU Portal: Login</h3>
         <form action="index.php" method="post">

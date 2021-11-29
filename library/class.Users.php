@@ -13,4 +13,8 @@ class USERS{
     public static function isLoggedStudent(){
         return USERS::isLogged() && $_COOKIE['user_role'] == 2;
     }
+    public static function getUserName(){
+        if(!USERS::isLogged()) return -1;
+        return $_COOKIE['logged_user'];
+    }
 }

@@ -1,15 +1,40 @@
+<?php
+function isActiveAdminHeader($id){
+    global $template_vars;
+    if($id == $template_vars["active_id_sub_header"]) echo "class=\"active\"";
+}
+?>
+
 <nav>
-
     <div class="primary-sub-header">
-        <ul id="Student">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Advising</a></li>
-            <li><a href="#">Attendance</a></li>
-            <li><a href="#">Grade</a></li>
-            <li><a href="#">Logout</a></li>
-        </ul>
+        <?php if(USERS::isLoggedAdmin()){ // the admin panel sub-header ?>
+            <ul id="Student">
+                <li <?php isActiveAdminHeader(0); ?>><a href="<?php echo $template_vars["get_hierarchy"];?>admin/index.php">Home</a></li>
+                <li <?php isActiveAdminHeader(1); ?>><a href="<?php echo $template_vars["get_hierarchy"];?>admin/course_list.php">Course List</a></li>
+                <li <?php isActiveAdminHeader(2); ?>><a href="<?php echo $template_vars["get_hierarchy"];?>admin/create_student.php">Create Student</a></li>
+                <li <?php isActiveAdminHeader(3); ?>><a href="<?php echo $template_vars["get_hierarchy"];?>admin/create_faculty.php">Create Faculty</a></li>
+                <li <?php isActiveAdminHeader(4); ?>><a href="<?php echo $template_vars["get_hierarchy"];?>admin/student_list.php">Student List</a></li>
+                <li <?php isActiveAdminHeader(5); ?>><a href="<?php echo $template_vars["get_hierarchy"];?>admin/faculty_list.php">Faculty List</a></li>
+                <li <?php isActiveAdminHeader(6); ?>><a href="<?php echo $template_vars["get_hierarchy"];?>logout.php">Logout</a></li>
+            </ul>
+        <?php }else if(USERS::isLoggedFaculty()){ ?>
+            <ul id="Student">
+                <li class="active"><a href="<?php echo $template_vars["get_hierarchy"];?>faculty/index.php">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Advising</a></li>
+                <li><a href="#">Attendance</a></li>
+                <li><a href="#">Grade</a></li>
+                <li><a href="<?php echo $template_vars["get_hierarchy"];?>logout.php">Logout</a></li>
+            </ul>
+        <?php }else if(USERS::isLoggedStudent()){ ?>
+            <ul id="Student">
+                <li class="active"><a href="<?php echo $template_vars["get_hierarchy"];?>student/index.php">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Advising</a></li>
+                <li><a href="#">Attendance</a></li>
+                <li><a href="#">Grade</a></li>
+                <li><a href="<?php echo $template_vars["get_hierarchy"];?>logout.php">Logout</a></li>
+            </ul>
+        <?php } ?>
     </div>
-
-
 </nav>

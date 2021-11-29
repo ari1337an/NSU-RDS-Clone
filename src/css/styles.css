@@ -34,17 +34,15 @@
   color: #fff;
 }
 
-
-
 /* Sub-header form */
 
 .primary-sub-header {
   text-align: center;
   font-size: 18px;
   font-weight: 200;
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
-#Student{
+#Student {
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -55,18 +53,15 @@
   width: 150px;
   margin: 15px;
   padding: 15px;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
 }
-.active, #Student li:hover{
-  background-color: #A0B8BF;
+.active,
+#Student li:hover {
+  background-color: #a0b8bf !important;
 }
 #Student a {
   color: #000;
 }
-
-
-
-
 
 /* The Login Page Form */
 .login-center {
@@ -121,4 +116,22 @@ input[type="password"] {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 22px;
+}
+
+/* Admin Panel Landings */
+.admin_welcome {
+  position: relative;
+  top: 45px;
+  padding: 0px 85px;
+  font-size: 23px;
+  color: #517e99;
+}
+
+.admin_welcome_border_bottom {
+  position: absolute;
+  border: 1px solid #000000;
+  top: 71px;
+  width: 90%;
+  left: 5%;
+  height: 0px;
 }

@@ -4,7 +4,7 @@ include "../app.php";
 
 // Define the Template Variables
 $template_vars["get_hierarchy"] = "../"; // take the script to the main hierarchy
-$template_vars["active_id_sub_header"] = 0; // determines which page is currently ON on the subheader
+$template_vars["active_id_sub_header"] = 2; // determines which page is currently ON on the subheader
 
 // Restrict the view to only Admin
 if (!USERS::isLoggedStudent()) {

@@ -42,6 +42,28 @@
   font-weight: 200;
   background-color: #ebebeb;
 }
+/* delete this commented part if not in use, if it is in use, rename that to sub-header-list */
+/* #Student {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 5px;
+}
+
+#Student li {
+  width: 150px;
+  margin: 15px;
+  padding: 15px;
+  background-color: #c4c4c4;
+}
+.active,
+#Student li:hover {
+  background-color: #a0b8bf !important;
+}
+#Student a {
+  color: #000;
+}
+
 #Student {
   display: flex;
   justify-content: space-between;
@@ -60,6 +82,30 @@
   background-color: #a0b8bf !important;
 }
 #Student a {
+  color: #000;
+} */
+
+/* fixing some naming */
+#sub-header-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 5px;
+}
+
+#sub-header-list li {
+  width: 150px;
+  margin: 15px;
+  padding: 15px;
+  background-color: #c4c4c4;
+}
+
+.active,
+#sub-header-list li:hover {
+  background-color: #a0b8bf !important;
+}
+
+#sub-header-list a {
   color: #000;
 }
 
@@ -118,6 +164,25 @@ input[type="password"] {
   font-size: 22px;
 }
 
+/* Landing page */
+.welcome_text {
+  position: relative;
+  top: 45px;
+  padding: 0px 85px;
+  font-size: 23px;
+  color: #517e99;
+}
+
+.welcome_border_bottom {
+  position: absolute;
+  border: 1px solid #000000;
+  top: 71px;
+  width: 90%;
+  left: 5%;
+  height: 0px;
+}
+
+/* delete this part if not needed. */
 /* Admin Panel Landings */
 .admin_welcome {
   position: relative;
@@ -135,3 +200,5 @@ input[type="password"] {
   left: 5%;
   height: 0px;
 }
+
+

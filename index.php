@@ -34,13 +34,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $how_many = $result->fetch_object()->count;
 
         if ($how_many == 1) {
-
-            $result = $APP_DB->query("SELECT ID FROM students WHERE username='$username' AND password='$password';");
-            $logged_user_id = $result->fetch_assoc()['ID'];
-
             setcookie('logged_user', $username, time() + (86400 * 30));
             setcookie('user_role', 2, time() + (86400 * 30)); // admin = 0, faculty = 1, student = 2
-            setcookie('user_id', $logged_user_id, time() + (86400 * 30));
 
             header("Location: ./student/index.php");
             exit;
@@ -53,14 +48,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $how_many = $result->fetch_object()->count;
 
         if ($how_many == 1) {
-            // Get the user ID of the logged in user from the database
-            $result = $APP_DB->query("SELECT ID FROM faculties WHERE username='$username' AND password='$password';");
-            $logged_user_id = $result->fetch_assoc()['ID'];
-
             // give login
             setcookie('logged_user', $username, time() + (86400 * 30));
             setcookie('user_role', 1, time() + (86400 * 30)); // admin = 0, faculty = 1, student = 2
-            setcookie('user_id', $logged_user_id, time() + (86400 * 30));
 
             // finished login process now redirect to the dashboard/admin panel
             //header('Refresh: 0, url = ./admin/index.php');
@@ -71,19 +61,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         }
     } else {
         // Maybe an admin
-
         $result = $APP_DB->query("SELECT count(*) as count FROM admins WHERE username='$username' AND password='$password';");
         $how_many = $result->fetch_object()->count;
 
         if ($how_many == 1) {
-            // Get the user ID of the logged in user from the database
-            $result = $APP_DB->query("SELECT ID FROM admins WHERE username='$username' AND password='$password';");
-            $logged_user_id = $result->fetch_assoc()['ID'];
-
             // give login
             setcookie('logged_user', $username, time() + (86400 * 30));
             setcookie('user_role', 0, time() + (86400 * 30)); // admin = 0, faculty = 1, student = 2
-            setcookie('user_id', $logged_user_id, time() + (86400 * 30));
 
             // finished login process now redirect to the dashboard/admin panel
             // header('Refresh: 0, url = ./admin/index.php');

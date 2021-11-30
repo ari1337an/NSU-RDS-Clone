@@ -2,7 +2,7 @@
 
 class USERS{
     public static function isLogged(){
-        return isset($_COOKIE['logged_user']) && isset($_COOKIE['user_role']) && isset($_COOKIE['user_id']);
+        return isset($_COOKIE['logged_user']) && isset($_COOKIE['user_role']);
     }
     public static function isLoggedAdmin(){
         return USERS::isLogged() && $_COOKIE['user_role'] == 0;

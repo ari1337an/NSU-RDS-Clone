@@ -9,6 +9,12 @@ function isActiveStudentHeader($id)
     global $template_vars;
     if ($id == $template_vars["active_id_sub_header"]) echo "class=\"active\"";
 }
+
+function isActiveFacultyHeader($id)
+{
+    global $template_vars;
+    if ($id == $template_vars["active_id_sub_header"]) echo "class=\"active\"";
+}
 ?>
 
 <nav>
@@ -26,11 +32,11 @@ function isActiveStudentHeader($id)
             </ul>
         <?php } else if (USERS::isLoggedFaculty()) { ?>
             <ul id="sub-header-list">
-                <li class="active"><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/index.php">Home</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Advising</a></li>
-                <li><a href="#">Attendance</a></li>
-                <li><a href="#">Grade</a></li>
+                <li <?php isActiveFacultyHeader(0); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/index.php">Home</a></li>
+                <li <?php isActiveFacultyHeader(1); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_profile.php">Profile</a></li>
+                <li <?php isActiveFacultyHeader(2); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_advising.php">Advising</a></li>
+                <li <?php isActiveFacultyHeader(3); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_attendance.php">Attendance</a></li>
+                <li <?php isActiveFacultyHeader(4); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_grade.php">Grade</a></li>
                 <li><a href="<?php echo $template_vars["get_hierarchy"]; ?>logout.php">Logout</a></li>
             </ul>
         <?php } else if (USERS::isLoggedStudent()) { ?>

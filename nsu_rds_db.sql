@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 09:25 AM
+-- Generation Time: Dec 06, 2021 at 12:55 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,7 +72,9 @@ CREATE TABLE `course_list` (
 --
 
 INSERT INTO `course_list` (`course_id`, `course_name`, `offer_status`) VALUES
-('CSE311', 'Database Systems', b'1');
+('CSE311', 'Database Systems', b'1'),
+('CSE332', 'Computer Organization and Architecture', b'1'),
+('CSE373', 'Design and Analysis of Algorithms', b'1');
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,9 @@ CREATE TABLE `faculties` (
 --
 
 INSERT INTO `faculties` (`USERNAME`, `PASSWORD`) VALUES
-('MKN1', '123456789');
+('AUZ', '12345'),
+('MKN1', '123456789'),
+('SMH2', '12345');
 
 -- --------------------------------------------------------
 
@@ -115,7 +119,9 @@ CREATE TABLE `faculty_profile` (
 --
 
 INSERT INTO `faculty_profile` (`name`, `initial`, `department_name`, `phone_number`, `nid`, `birth_reg_no`, `dob`, `gender`, `citizenship`) VALUES
-('Mostafa kamal nasir', 'MKN1', 'ECE', '01711111111', '1111111111', '99999999999', '1979-11-11', 'M', 'Bangladeshi');
+('Asad Uz Zaman', 'AUZ', 'PHY', '1234564', '123456745', '12345675545', '2021-12-06', 'M', 'Canadian'),
+('Mostafa kamal nasir', 'MKN1', 'ECE', '01711111111', '1111111111', '99999999999', '1979-11-11', 'M', 'Bangladeshi'),
+('Syed Hussain Mahmud', 'SMH2', 'ECE', '1234567', '121324354', '232543624325', '2021-12-01', 'M', 'Bangladeshi');
 
 -- --------------------------------------------------------
 
@@ -130,6 +136,16 @@ CREATE TABLE `grades` (
   `given_to` int(11) DEFAULT NULL,
   `grade_value` decimal(2,1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `grades`
+--
+
+INSERT INTO `grades` (`trace_id`, `course_id`, `submitted_by`, `given_to`, `grade_value`) VALUES
+(8, 'CSE311', 'MKN1', 2011188642, '4.0'),
+(10, 'CSE311', 'MKN1', 1721084642, '4.0'),
+(11, 'CSE332', 'MKN1', 2011084642, '4.0'),
+(12, 'CSE311', 'MKN1', 2011084642, '3.7');
 
 -- --------------------------------------------------------
 
@@ -147,8 +163,12 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`USERNAME`, `PASSWORD`) VALUES
+(1721084642, '12345'),
 (1911110642, '12345'),
-(2011188642, '12345');
+(2011084642, '12345'),
+(2011111111, '12345'),
+(2011188642, '12345'),
+(2022222222, '12345');
 
 -- --------------------------------------------------------
 
@@ -178,7 +198,12 @@ CREATE TABLE `student_profile` (
 --
 
 INSERT INTO `student_profile` (`id`, `name`, `fathers_name`, `mothers_name`, `department_name`, `degree`, `credits`, `cgpa`, `phone_number`, `nid`, `birth_reg_no`, `dob`, `gender`, `citizenship`) VALUES
-(2011188642, 'Faisal Ahmed Sifat', 'Md. Nurur Zaman', 'Mst. Josna Begum', 'ECE', 'CSE', 47, '3.10', '01887397067', '123456789', '987654321', '2000-09-04', 'M', 'Bangladeshi');
+(1721084642, 'XYZ ABC', 'GHJ ABC', 'IOS ABC', 'ECE', 'CSE', 100, '2.50', '1212121212', '1212121212121212', '12121212121212', '2021-12-06', 'F', 'Bangladeshi'),
+(1911110642, 'sdsd sdsd sdsd', 'sdsd sdsds', 'sdsd sdsdsdsd', 'ECE', 'sds', 100, '4.00', '121212121234', '121212121234121212121234121212121234', '121212121234121212121234', '2021-12-02', 'M', 'Bangladeshi'),
+(2011084642, 'Md Sahadul Hasan Arian', 'Md Abdul Wahab', 'Mrs Rabia Wahab', 'ECE', 'CSE', 66, '1.00', '1212343', '32325452354443454', '323254523544434542323', '2021-11-03', 'M', 'Bangladeshi'),
+(2011111111, 'sdfsdf sdfasdfsd', 'sdfsadf asdfsdf', 'sdfsadf asdfasdf', 'sds', 'sdd', 100, '2.50', '12345672', '1234567212345672', '123456721234567212345672', '2021-12-02', 'M', 'Bangladeshi'),
+(2011188642, 'Faisal Ahmed Sifat', 'Md. Nurur Zaman', 'Mst. Josna Begum', 'ECE', 'CSE', 47, '3.10', '01887397067', '123456789', '987654321', '2000-09-04', 'M', 'Bangladeshi'),
+(2022222222, 'wsdfsdf sdfsdf', 'sdfs sfsfds sdfsdf', 'sfsdfsd sdfsdf ssd', 'PHY', 'sds', 88, '1.00', '23232', '23232232323223', '232322323232232323223', '2021-12-06', 'M', 'Bangladeshi');
 
 -- --------------------------------------------------------
 
@@ -197,7 +222,11 @@ CREATE TABLE `taking` (
 --
 
 INSERT INTO `taking` (`trace_id`, `course_id`, `who_is_taking`) VALUES
-(1, 'CSE311', 2011188642);
+(1, 'CSE311', 2011188642),
+(2, 'CSE311', 2011084642),
+(3, 'CSE311', 1721084642),
+(4, 'CSE332', 2011188642),
+(5, 'CSE332', 2011084642);
 
 -- --------------------------------------------------------
 
@@ -215,7 +244,9 @@ CREATE TABLE `teaches` (
 --
 
 INSERT INTO `teaches` (`course_id`, `who_is_teaching`) VALUES
-('CSE311', 'MKN1');
+('CSE373', 'AUZ'),
+('CSE311', 'MKN1'),
+('CSE332', 'MKN1');
 
 --
 -- Indexes for dumped tables
@@ -316,13 +347,13 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `taking`
 --
 ALTER TABLE `taking`
-  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

@@ -201,4 +201,62 @@ input[type="password"] {
   height: 0px;
 }
 
+/* Faculty_Profile */
+.border {
+  position: absolute;
+  width: 1365px;
+  height: 0px;
+  left: 10px;
+  top: 150px;
+  border: 1px solid #000000;
+}
 
+
+.nav_bar {
+  position: relative;
+  float: left;
+  top: 50px;
+  left:73px;
+
+  padding: 0px 20px 0px 20px;
+}
+
+.nav_bar ul {
+  padding: 0;
+  list-style: none;
+}
+.nav_bar ul li {
+  float: left;
+  font: size 20px;
+  font-weight: bold;
+}
+
+.nav_bar ul li a {
+  text-decoration: none;
+  font-size: 20px;
+  background-color: #d9edf7;
+  border: 1px solid #000000;
+  padding: 10px 150px 10px 170px;
+}
+
+.Gen{
+  position: absolute;
+  float:left;
+  top:350px;
+  left:100px;
+  color:#478CFA;
+  font-size: 18px;
+  font-weight: bold;
+
+  
+  
+}
+.profile-user-info{
+  position:absolute;
+  top:400px;
+  left:250px;
+  color:#478CFA;
+  font-size: 18px;
+  font-weight: 400;
+
+}

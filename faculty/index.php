@@ -4,12 +4,16 @@
 
     // Define the Template Variables
     $template_vars["get_hierarchy"] = "../"; // take the script to the main hierarchy
+    $template_vars["active_id_sub_header"] = 0; // determines which page is currently ON on the subheader
 
     // Restrict the view to only Admin
     if(!USERS::isLoggedFaculty()){
         header("Location: ../index.php");
         exit;
     }
+
+    
+
 
 
 ?>
@@ -28,6 +32,12 @@
 </head>
 <body>
     <?php include "../template/header.php"; ?>
-    Welcom to faculty panel, <a href="../logout.php">Logout?</a>? 
+    <?php include "../template/sub_header.php"; ?>
+        
+    <section class="admin_welcome">
+        Welcome <?php echo USERS::getUserName(); ?>
+        <div class="admin_welcome_border_bottom"></div>
+    </section>
+
 </body>
 </html>

@@ -30,7 +30,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     if (trying_to_login_student($username)) {
 
-        $result = $APP_DB->query("SELECT count(*) as count FROM students WHERE username='$username' AND password='$password';");
+       
         $how_many = $result->fetch_object()->count;
 
         if ($how_many == 1) {

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2021 at 05:39 PM
+-- Generation Time: Dec 06, 2021 at 09:14 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,6 +67,13 @@ CREATE TABLE `course_list` (
   `offer_status` bit(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `course_list`
+--
+
+INSERT INTO `course_list` (`course_id`, `course_name`, `offer_status`) VALUES
+('CSE311', 'Database Systems', b'1');
+
 -- --------------------------------------------------------
 
 --
@@ -103,6 +110,13 @@ CREATE TABLE `faculty_profile` (
   `citizenship` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `faculty_profile`
+--
+
+INSERT INTO `faculty_profile` (`name`, `initial`, `department_name`, `phone_number`, `nid`, `birth_reg_no`, `dob`, `gender`, `citizenship`) VALUES
+('Mostafa kamal nasir', 'MKN1', 'ECE', '01711111111', '1111111111', '99999999999', '1979-11-11', 'M', 'Bangladeshi');
+
 -- --------------------------------------------------------
 
 --
@@ -133,7 +147,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`USERNAME`, `PASSWORD`) VALUES
-(1911110642, '12345');
+(1911110642, '12345'),
+(2011188642, '12345');
 
 -- --------------------------------------------------------
 
@@ -158,6 +173,13 @@ CREATE TABLE `student_profile` (
   `citizenship` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `student_profile`
+--
+
+INSERT INTO `student_profile` (`id`, `name`, `fathers_name`, `mothers_name`, `department_name`, `degree`, `credits`, `cgpa`, `phone_number`, `nid`, `birth_reg_no`, `dob`, `gender`, `citizenship`) VALUES
+(2011188642, 'Faisal Ahmed Sifat', 'Md. Nurur Zaman', 'Mst. Josna Begum', 'ECE', 'CSE', 47, '3.10', '01887397067', '123456789', '987654321', '2000-09-04', 'M', 'Bangladeshi');
+
 -- --------------------------------------------------------
 
 --
@@ -170,6 +192,13 @@ CREATE TABLE `taking` (
   `who_is_taking` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `taking`
+--
+
+INSERT INTO `taking` (`trace_id`, `course_id`, `who_is_taking`) VALUES
+(1, 'CSE311', 2011188642);
+
 -- --------------------------------------------------------
 
 --
@@ -180,6 +209,13 @@ CREATE TABLE `teaches` (
   `course_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `who_is_teaching` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `teaches`
+--
+
+INSERT INTO `teaches` (`course_id`, `who_is_teaching`) VALUES
+('CSE311', 'MKN1');
 
 --
 -- Indexes for dumped tables
@@ -286,7 +322,7 @@ ALTER TABLE `grades`
 -- AUTO_INCREMENT for table `taking`
 --
 ALTER TABLE `taking`
-  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 09:14 AM
+-- Generation Time: Dec 06, 2021 at 09:25 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -43,10 +43,10 @@ INSERT INTO `admins` (`ID`, `USERNAME`, `PASSWORD`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attandance`
+-- Table structure for table `attendance`
 --
 
-CREATE TABLE `attandance` (
+CREATE TABLE `attendance` (
   `trace_id` int(10) NOT NULL,
   `course_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `submitted_by` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -229,9 +229,9 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `USERNAME` (`USERNAME`);
 
 --
--- Indexes for table `attandance`
+-- Indexes for table `attendance`
 --
-ALTER TABLE `attandance`
+ALTER TABLE `attendance`
   ADD PRIMARY KEY (`trace_id`),
   ADD KEY `course_id` (`course_id`),
   ADD KEY `given_to` (`given_to`),
@@ -307,9 +307,9 @@ ALTER TABLE `admins`
   MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `attandance`
+-- AUTO_INCREMENT for table `attendance`
 --
-ALTER TABLE `attandance`
+ALTER TABLE `attendance`
   MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
@@ -329,12 +329,12 @@ ALTER TABLE `taking`
 --
 
 --
--- Constraints for table `attandance`
+-- Constraints for table `attendance`
 --
-ALTER TABLE `attandance`
-  ADD CONSTRAINT `attandance_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course_list` (`course_id`),
-  ADD CONSTRAINT `attandance_ibfk_2` FOREIGN KEY (`given_to`) REFERENCES `student_profile` (`id`),
-  ADD CONSTRAINT `attandance_ibfk_3` FOREIGN KEY (`submitted_by`) REFERENCES `faculty_profile` (`initial`);
+ALTER TABLE `attendance`
+  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course_list` (`course_id`),
+  ADD CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`given_to`) REFERENCES `student_profile` (`id`),
+  ADD CONSTRAINT `attendance_ibfk_3` FOREIGN KEY (`submitted_by`) REFERENCES `faculty_profile` (`initial`);
 
 --
 -- Constraints for table `faculty_profile`

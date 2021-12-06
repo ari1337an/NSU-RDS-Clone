@@ -6,14 +6,11 @@
     $template_vars["get_hierarchy"] = "../"; // take the script to the main hierarchy
     $template_vars["active_id_sub_header"] = 0; // determines which page is currently ON on the subheader
 
-    // Restrict the view to only Admin
+    // Restrict the view to only Faculty
     if(!USERS::isLoggedFaculty()){
         header("Location: ../index.php");
         exit;
     }
-
-    
-
 
 
 ?>
@@ -28,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/css/styles.css">
-    <title>Welcome | Admin Panel</title>
+    <title>Welcome | Faculty Panel</title>
 </head>
 <body>
     <?php include "../template/header.php"; ?>
@@ -38,6 +35,23 @@
         Welcome <?php echo USERS::getUserName(); ?>
         <div class="admin_welcome_border_bottom"></div>
     </section>
+
+
+    <div class="container_panel">
+    <?php 
+        if(isset($_GET['submitted_grades']) && $_GET['submitted_grades'] = 1){
+            ?>
+            
+            <div class="message">
+                Successfully Submitted Grades!
+            </div>
+            
+            <?php
+        }
+    ?>
+    </div>
+
+  
 
 </body>
 </html>

@@ -6,6 +6,17 @@
   font-family: "Roboto", sans-serif;
 }
 
+/* Containers  */
+.container_panel {
+  position: relative;
+  top: 88px;
+}
+
+.message {
+  position: absolute;
+  padding: 50px 0px 0px 80px;
+}
+
 /* header form */
 
 .primary-header {
@@ -211,12 +222,11 @@ input[type="password"] {
   border: 1px solid #000000;
 }
 
-
 .nav_bar {
   position: relative;
   float: left;
   top: 50px;
-  left:73px;
+  left: 73px;
 
   padding: 0px 20px 0px 20px;
 }
@@ -239,24 +249,20 @@ input[type="password"] {
   padding: 10px 150px 10px 170px;
 }
 
-.Gen{
+.Gen {
   position: absolute;
-  float:left;
-  top:350px;
-  left:100px;
-  color:#478CFA;
+  float: left;
+  top: 350px;
+  left: 100px;
+  color: #478cfa;
   font-size: 18px;
   font-weight: bold;
-
-  
-  
 }
-.profile-user-info{
-  position:absolute;
-  top:400px;
-  left:250px;
-  color:#478CFA;
+.profile-user-info {
+  position: absolute;
+  top: 400px;
+  left: 250px;
+  color: #478cfa;
   font-size: 18px;
   font-weight: 400;
-
 }

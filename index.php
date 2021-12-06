@@ -2,6 +2,21 @@
 
 require 'app.php'; // load the application
 
+
+if(USERS::isLogged()){
+    if(USERS::isLoggedAdmin()){
+        header("Location: ./admin/index.php");
+        exit;
+    }else if(USERS::isLoggedStudent()){
+        header("Location: ./student/index.php");
+        exit;
+    }else if(USERS::isLoggedFaculty()){
+        header("Location: ./faculty/index.php");
+        exit;
+    }
+}
+
+
 function trying_to_login_student($username)
 { // all is int
     if (ctype_digit($username)) {

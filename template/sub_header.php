@@ -34,7 +34,7 @@ function isActiveFacultyHeader($id)
             <ul id="sub-header-list">
                 <li <?php isActiveFacultyHeader(0); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/index.php">Home</a></li>
                 <li <?php isActiveFacultyHeader(1); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_profile.php">Profile</a></li>
-                <li <?php isActiveFacultyHeader(2); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_advising.php">Advising</a></li>
+                <li <?php isActiveFacultyHeader(2); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_course_list.php">Course List</a></li>
                 <li <?php isActiveFacultyHeader(3); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_attendance.php">Attendance</a></li>
                 <li <?php isActiveFacultyHeader(4); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>faculty/faculty_grade.php">Grade</a></li>
                 <li><a href="<?php echo $template_vars["get_hierarchy"]; ?>logout.php">Logout</a></li>

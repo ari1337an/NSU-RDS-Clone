@@ -161,7 +161,7 @@ if(isset($_POST['request_for_grade_change'])){
     <h3>Submitting Grades For <?php echo $_GET['course_id'];?></h3>
 
     <section>
-    <form method="POST">
+    <form method="post">
     <table>
         <tr>
             <th>Student ID</th>

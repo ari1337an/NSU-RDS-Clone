@@ -11,9 +11,6 @@ if (!USERS::isLoggedAdmin()) {
     header("Location: ../index.php");
     exit;
 }
-
-
-
 ?>
 
 
@@ -28,36 +25,31 @@ if (!USERS::isLoggedAdmin()) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/css/styles.css">
-    <title>Welcome | Faculty Panel</title>
+    <title>Attendance | Faculty Panel</title>
 </head>
 
 <body>
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Initial</th>
-            <th>Department</th>
-            <th>Profile</th>
-        </tr>
-        <?php
-        $result = $APP_DB->query("select name, initial, department_name from faculty_profile;");
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+
+    <section>
+        <form method="POST">
+            <table>
                 <tr>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['initial'] ?></td>
-                    <td><?php echo $row['department_name'] ?></td>
-                    <td><a href="./show_profile.php?faculty_initial=<?php echo $row['initial']; ?>" class="btn">Submit</a></td>
+                    <th>name</th>
                 </tr>
-        <?php
-            }
-        }
-        ?>
-    </table>
+                <tr>
+                    <th>Initial</th>
+                </tr>
+                <tr>td</tr>
+            </table>
+            <input type="hidden" name="form_submitted_by" value="<?php echo USERS::getUserName(); ?>">
+            <input type="submit" name="request_for_attendance" value="Submit">
+        </form>
+    </section>
+
+
 
 </body>
 

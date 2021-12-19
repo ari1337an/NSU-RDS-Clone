@@ -155,7 +155,7 @@
 }
 
 .login-center input[type="text"],
-input[type="password"] {
+.login-center input[type="password"] {
   width: 350px;
   height: 40px;
   margin-top: 20px;
@@ -265,4 +265,10 @@ input[type="password"] {
   color: #478cfa;
   font-size: 18px;
   font-weight: 400;
+}
+.create_faculty{
+  
+  position:relative;
+  top:150px;
+  left:150px;
 }

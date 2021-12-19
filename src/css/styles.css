@@ -266,7 +266,7 @@
   font-size: 18px;
   font-weight: 400;
 }
-.create_faculty{
+.create_faculty, .view_faculty, .edit_faculty{
   
   position:relative;
   top:150px;

@@ -32,21 +32,10 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-
-    <form method="POST">
-
-        <table>
-            <tr>
-                <th>Faculty name</th>
-                <th>Faculty Initial</th>
-                <th>department</th>
-                <th>phone number</th>
-                <th>nid</th>
-                <th>birth reg</th>
-                <th>Date of birth</th>
-                <th>gender</th>
-                <th>citizenship</th>
-            </tr>
+    <div class="view_faculty">
+        <h3>Faculty Profile</h3>
+        <br>
+        <form action="edit_profile.php" method="post">
             <?php
             $result = $APP_DB->query("
     SELECT * from faculty_profile where initial='" . $_GET['faculty_initial'] . "';
@@ -55,25 +44,38 @@ if (!USERS::isLoggedAdmin()) {
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
             ?>
-                    <tr>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['initial'] ?></td>
-                        <td><?php echo $row['department_name'] ?></td>
-                        <td><?php echo $row['phone_number'] ?></td>
-                        <td><?php echo $row['nid'] ?></td>
-                        <td><?php echo $row['birth_reg_no'] ?></td>
-                        <td><?php echo $row['dob'] ?></td>
-                        <td><?php echo $row['gender'] ?></td>
-                        <td><?php echo $row['citizenship'] ?></td>
-                    </tr>
+
+ 
+                    <label>Name: <?php echo $row['name'] ?></label><br>
+                    <br>
+                    <label>Initial: <?php echo $row['initial'] ?></label><br>
+                    <br>
+                    <label>Date of Birth: <?php echo $row['dob'] ?></label><br>
+                    <br>
+                    <label>Department Name: <?php echo $row['department_name'] ?></label><br>
+                    <br>
+                    <label>Phone No: <?php echo $row['phone_number'] ?></label><br>
+                    <br>
+                    <label>NID: <?php echo $row['nid'] ?></label><br>
+                    <br>
+                    <label>Birth Registration Number: <?php echo $row['birth_reg_no'] ?></label><br>
+                    <br>
+                    <label>Gender: <?php echo $row['gender'] ?></label><br>
+                    <br>
+                    <label>citizenship: <?php echo $row['citizenship'] ?></label><br>
+                    <br>
+
+
             <?php
                 }
             }
             ?>
-        </table>
-        <input type="hidden" name="form_submitted_by" value="<?php echo USERS::getUserName(); ?>">
-        <input type="submit" name="request_for_attendance" value="Submit">
-    </form>
+            <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['faculty_initial']; ?>">
+            <input type="submit" name="request_for_edit" value="Edit Profile">
+
+        </form>
+    </div>
+    <br>
 
 
 

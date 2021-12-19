@@ -33,21 +33,47 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/sub_header.php"; ?>
 
 
-    <section>
-        <form method="POST">
-            <table>
-                <tr>
-                    <th>name</th>
-                </tr>
-                <tr>
-                    <th>Initial</th>
-                </tr>
-                <tr>td</tr>
-            </table>
-            <input type="hidden" name="form_submitted_by" value="<?php echo USERS::getUserName(); ?>">
-            <input type="submit" name="request_for_attendance" value="Submit">
-        </form>
-    </section>
+    <form method="POST">
+
+        <table>
+            <tr>
+                <th>Faculty name</th>
+                <th>Faculty Initial</th>
+                <th>department</th>
+                <th>phone number</th>
+                <th>nid</th>
+                <th>birth reg</th>
+                <th>Date of birth</th>
+                <th>gender</th>
+                <th>citizenship</th>
+            </tr>
+            <?php
+            $result = $APP_DB->query("
+    SELECT * from faculty_profile where initial='" . $_GET['faculty_initial'] . "';
+");
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                    <tr>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['initial'] ?></td>
+                        <td><?php echo $row['department_name'] ?></td>
+                        <td><?php echo $row['phone_number'] ?></td>
+                        <td><?php echo $row['nid'] ?></td>
+                        <td><?php echo $row['birth_reg_no'] ?></td>
+                        <td><?php echo $row['dob'] ?></td>
+                        <td><?php echo $row['gender'] ?></td>
+                        <td><?php echo $row['citizenship'] ?></td>
+                    </tr>
+            <?php
+                }
+            }
+            ?>
+        </table>
+        <input type="hidden" name="form_submitted_by" value="<?php echo USERS::getUserName(); ?>">
+        <input type="submit" name="request_for_attendance" value="Submit">
+    </form>
 
 
 

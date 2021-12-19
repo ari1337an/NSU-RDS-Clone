@@ -37,11 +37,21 @@ if (isset($_POST['request_for_attendance'])) {
             if(isset($_POST[$cur_id])){
                 $cur_status = 1;
             }
-
-            $APP_DB->query("
-                    INSERT INTO attendance(course_id,submitted_by, given_to, is_present, at_which_date)
-                    VALUES('".$form_course_id."', '".$form_submitted_by."', '".$cur_id."', ".$cur_status.", '" . $todays_date . "');
+            $newresult = $APP_DB->query("
+            SELECT at_which_date from attendance where at_which_date='" . $todays_date . "' and given_to=". $cur_id ."
             ");
+            if(mysqli_num_rows($newresult) > 0){
+                $APP_DB->query("
+                UPDATE attendance 
+                SET is_present=".$cur_status.", at_which_date='".$todays_date."' 
+                WHERE given_to=".$cur_id."
+                ");
+            }else{
+                $APP_DB->query("
+                    INSERT INTO attendance(course_id,submitted_by, given_to, is_present, at_which_date)
+                    VALUES('" . $form_course_id . "', '" . $form_submitted_by . "', '" . $cur_id . "', " . $cur_status . ", '" . $todays_date . "');
+            ");
+            }
         }
     }
     header("Location: ./index.php?submitted_attendance=1");

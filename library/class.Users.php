@@ -17,4 +17,14 @@ class USERS{
         if(!USERS::isLogged()) return -1;
         return $_COOKIE['logged_user'];
     }
+    public static function calculateCgpa($id)
+    {
+        global $APP_DB;
+        $result = $APP_DB->query("
+            select sum(grade_value) as 'total_grade', count(*) as 'total_course'
+            from grades
+            GROUP by given_to
+            HAVING given_to=" . $id . ";
+        ");
+    }
 }

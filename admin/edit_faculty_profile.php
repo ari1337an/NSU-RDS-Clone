@@ -46,6 +46,8 @@ if (isset($_POST['password']) && isset($_POST['dept']) && isset($_POST['phone'])
         } else {
             die("Invalid Input!");
         }
+        header("Location: ./index.php?updated_profile=1");
+        exit;
     }
 }
 

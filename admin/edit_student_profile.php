@@ -13,7 +13,7 @@ if (!USERS::isLoggedAdmin()) {
 }
 
 
-if (isset($_POST['password']) && isset($_POST['dept']) && isset($_POST['phone']) && isset($_POST['nid']) && isset($_POST['birth_reg_no']) && isset($_POST['degree'])&& isset($_POST['fathers_name'])&& isset($_POST['mothers_name'])) {
+if (isset($_POST['password']) && isset($_POST['dept']) && isset($_POST['phone']) && isset($_POST['nid']) && isset($_POST['birth_reg_no']) && isset($_POST['degree']) && isset($_POST['fathers_name']) && isset($_POST['mothers_name'])) {
 
     $pass = $_POST["password"];
     $dept = $_POST["dept"];
@@ -38,7 +38,7 @@ if (isset($_POST['password']) && isset($_POST['dept']) && isset($_POST['phone'])
             where username=" . $_POST['form_submitted_for'];
             $query2 = "
             UPDATE student_profile
-            SET fathers_name='".$father. "',mothers_name='" . $mother . "', degree='" . $degree . "',department_name='" . $dept . "', phone_number=" . $phone . ", nid=" . $NID . ", birth_reg_no=" . $birth_reg_no . "
+            SET fathers_name='" . $father . "',mothers_name='" . $mother . "', degree='" . $degree . "',department_name='" . $dept . "', phone_number=" . $phone . ", nid=" . $NID . ", birth_reg_no=" . $birth_reg_no . "
             WHERE id=" . $_POST['form_submitted_for'];
 
             if ($APP_DB->query($query) && $APP_DB->query($query2)) {
@@ -49,6 +49,8 @@ if (isset($_POST['password']) && isset($_POST['dept']) && isset($_POST['phone'])
         } else {
             die("Invalid Input!");
         }
+        header("Location: ./index.php?updated_profile=1");
+        exit;
     }
 }
 

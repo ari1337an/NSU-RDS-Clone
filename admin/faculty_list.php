@@ -35,29 +35,32 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Initial</th>
-            <th>Department</th>
-            <th>Profile</th>
-        </tr>
-        <?php
-        $result = $APP_DB->query("select name, initial, department_name from faculty_profile order by(initial) asc");
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-                <tr>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['initial'] ?></td>
-                    <td><?php echo $row['department_name'] ?></td>
-                    <td><a href="./show_faculty_profile.php?faculty_initial=<?php echo $row['initial']; ?>" class="btn">Submit</a></td>
-                </tr>
-        <?php
+    <div class="container_panel container_left_fix">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Initial</th>
+                <th>Department</th>
+                <th>Profile</th>
+            </tr>
+            <?php
+            $result = $APP_DB->query("select name, initial, department_name from faculty_profile order by(initial) asc");
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                    <tr>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['initial'] ?></td>
+                        <td><?php echo $row['department_name'] ?></td>
+                        <td><a href="./show_faculty_profile.php?faculty_initial=<?php echo $row['initial']; ?>" class="btn">View</a></td>
+                    </tr>
+            <?php
+                }
             }
-        }
-        ?>
-    </table>
+            ?>
+        </table>
+    </div>
+    
 
 </body>
 

@@ -78,10 +78,10 @@
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
         
+    <div class="container_panel container_left_fix">
 
 <?php if(isset($_POST['create_new_course_form']) && $_POST['create_new_course'] == true){?>
 
-    <div class="container_panel">
         <h3>Create A New Course</h3>
         <form method="POST">
             <label for="course_id">Course ID: </label>
@@ -105,10 +105,8 @@
             
             <input type="submit" name="new_course_create_form" value="Create Course">
         </form>
-    </div>
 
 <?php }else{ ?>
-    <div class="container_panel">
 <?php 
 $result = $APP_DB->query("SELECT settings_value FROM site_settings WHERE settings_name='advising_state'");
 $advising_state = $result->fetch_object()->settings_value;
@@ -164,9 +162,8 @@ function auto_select_this_radio($val){
             <input type="hidden" name="create_new_course" value="true">
             <input type="submit" name="create_new_course_form" value="Create New Course">
         </form>
-    </div>
-<?php } ?>
     
-
+<?php } ?>
+    </div>
 </body>
 </html>

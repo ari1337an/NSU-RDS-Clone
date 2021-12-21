@@ -12,6 +12,10 @@
   top: 88px;
 }
 
+.container_left_fix {
+  margin-left: 88px;
+}
+
 .message {
   position: absolute;
   padding: 50px 0px 0px 80px;
@@ -266,15 +270,17 @@
   font-size: 18px;
   font-weight: 400;
 }
-.create_faculty, .view_faculty, .edit_faculty{
-  
-  position:relative;
-  top:150px;
-  left:150px;
+.create_faculty,
+.view_faculty,
+.edit_faculty {
+  position: relative;
+  top: 150px;
+  left: 150px;
 }
-.create_student, .view_student, .edit_student{
-  
-  position:relative;
-  top:125px;
-  left:150px;
+.create_student,
+.view_student,
+.edit_student {
+  position: relative;
+  top: 125px;
+  left: 150px;
 }

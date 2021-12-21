@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 12:55 PM
+-- Generation Time: Dec 21, 2021 at 05:21 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -55,6 +55,18 @@ CREATE TABLE `attendance` (
   `at_which_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`trace_id`, `course_id`, `submitted_by`, `given_to`, `is_present`, `at_which_date`) VALUES
+(1, 'CSE311', 'MKN1', 2011188642, b'0', '2021-12-18'),
+(2, 'CSE311', 'MKN1', 2011084642, b'1', '2021-12-18'),
+(3, 'CSE311', 'MKN1', 1721084642, b'1', '2021-12-18'),
+(4, 'CSE311', 'MKN1', 2011188642, b'0', '2021-12-18'),
+(5, 'CSE311', 'MKN1', 2011084642, b'1', '2021-12-18'),
+(6, 'CSE311', 'MKN1', 1721084642, b'1', '2021-12-18');
+
 -- --------------------------------------------------------
 
 --
@@ -73,8 +85,12 @@ CREATE TABLE `course_list` (
 
 INSERT INTO `course_list` (`course_id`, `course_name`, `offer_status`) VALUES
 ('CSE311', 'Database Systems', b'1'),
+('CSE323', 'Operating System', b'1'),
 ('CSE332', 'Computer Organization and Architecture', b'1'),
-('CSE373', 'Design and Analysis of Algorithms', b'1');
+('CSE373', 'Design and Analysis of Algorithms', b'1'),
+('MAT120', 'Calculus I', b'1'),
+('MAT130', 'Calculus II', b'1'),
+('MAT350', 'Engineering Mathematics', b'1');
 
 -- --------------------------------------------------------
 
@@ -143,9 +159,27 @@ CREATE TABLE `grades` (
 
 INSERT INTO `grades` (`trace_id`, `course_id`, `submitted_by`, `given_to`, `grade_value`) VALUES
 (8, 'CSE311', 'MKN1', 2011188642, '4.0'),
-(10, 'CSE311', 'MKN1', 1721084642, '4.0'),
+(10, 'CSE311', 'MKN1', 1721084642, '3.7'),
 (11, 'CSE332', 'MKN1', 2011084642, '4.0'),
-(12, 'CSE311', 'MKN1', 2011084642, '3.7');
+(12, 'CSE311', 'MKN1', 2011084642, '3.3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE `site_settings` (
+  `settings_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `settings_value` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `site_settings`
+--
+
+INSERT INTO `site_settings` (`settings_name`, `settings_value`) VALUES
+('advising_state', '0');
 
 -- --------------------------------------------------------
 
@@ -245,8 +279,12 @@ CREATE TABLE `teaches` (
 
 INSERT INTO `teaches` (`course_id`, `who_is_teaching`) VALUES
 ('CSE373', 'AUZ'),
+('MAT350', 'AUZ'),
 ('CSE311', 'MKN1'),
-('CSE332', 'MKN1');
+('CSE323', 'MKN1'),
+('CSE332', 'MKN1'),
+('MAT120', 'SMH2'),
+('MAT130', 'SMH2');
 
 --
 -- Indexes for dumped tables
@@ -299,6 +337,12 @@ ALTER TABLE `grades`
   ADD KEY `submitted_by` (`submitted_by`);
 
 --
+-- Indexes for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  ADD PRIMARY KEY (`settings_name`) USING BTREE;
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -341,7 +385,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `grades`

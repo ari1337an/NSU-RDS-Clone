@@ -4,7 +4,7 @@ include "../app.php";
 
 // Define the Template Variables
 $template_vars["get_hierarchy"] = "../"; // take the script to the main hierarchy
-$template_vars["active_id_sub_header"] = 5; // determines which page is currently ON on the subheader
+$template_vars["active_id_sub_header"] = 4; // determines which page is currently ON on the subheader
 
 // Restrict the view to only Admin
 if (!USERS::isLoggedAdmin()) {
@@ -25,30 +25,34 @@ if (!USERS::isLoggedAdmin()) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/css/styles.css">
-    <title>Attendance | Faculty Panel</title>
+    <title>Student | Admin Panel</title>
 </head>
 
 <body>
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <div class="view_faculty">
-        <h3>Faculty Profile</h3>
+    <div class="view_student">
+        <h3>Student Profile Profile</h3>
         <br>
-        <form action="edit_profile.php" method="post">
+        <form action="edit_student_profile.php" method="post">
             <?php
             $result = $APP_DB->query("
-    SELECT * from faculty_profile where initial='" . $_GET['faculty_initial'] . "';
+    SELECT * from student_profile where id='" . $_GET['student_id'] . "';
 ");
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
             ?>
 
- 
+
                     <label>Name: <?php echo $row['name'] ?></label><br>
                     <br>
-                    <label>Initial: <?php echo $row['initial'] ?></label><br>
+                    <label>ID: <?php echo $row['id'] ?></label><br>
+                    <br>
+                    <label>Father's name: <?php echo $row['fathers_name'] ?></label><br>
+                    <br>
+                    <label>Mother's name: <?php echo $row['mothers_name'] ?></label><br>
                     <br>
                     <label>Date of Birth: <?php echo $row['dob'] ?></label><br>
                     <br>
@@ -64,13 +68,19 @@ if (!USERS::isLoggedAdmin()) {
                     <br>
                     <label>citizenship: <?php echo $row['citizenship'] ?></label><br>
                     <br>
+                    <label>Degree: <?php echo $row['degree'] ?></label><br>
+                    <br>
+                    <label>Credits: <?php echo $row['credits'] ?></label><br>
+                    <br>
+                    <label>CGPA: <?php echo $row['cgpa'] ?></label><br>
+                    <br>
 
 
             <?php
                 }
             }
             ?>
-            <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['faculty_initial']; ?>">
+            <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['student_id']; ?>">
             <input type="submit" name="request_for_edit" value="Edit Profile">
 
         </form>

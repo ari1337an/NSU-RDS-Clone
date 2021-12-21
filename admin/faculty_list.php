@@ -28,7 +28,7 @@ if (!USERS::isLoggedAdmin()) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/css/styles.css">
-    <title>Welcome | Faculty Panel</title>
+    <title>Faculty List | Admin Panel</title>
 </head>
 
 <body>
@@ -43,7 +43,7 @@ if (!USERS::isLoggedAdmin()) {
             <th>Profile</th>
         </tr>
         <?php
-        $result = $APP_DB->query("select name, initial, department_name from faculty_profile;");
+        $result = $APP_DB->query("select name, initial, department_name from faculty_profile order by(initial) asc");
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
         ?>
@@ -51,7 +51,7 @@ if (!USERS::isLoggedAdmin()) {
                     <td><?php echo $row['name']; ?></td>
                     <td><?php echo $row['initial'] ?></td>
                     <td><?php echo $row['department_name'] ?></td>
-                    <td><a href="./show_profile.php?faculty_initial=<?php echo $row['initial']; ?>" class="btn">Submit</a></td>
+                    <td><a href="./show_faculty_profile.php?faculty_initial=<?php echo $row['initial']; ?>" class="btn">Submit</a></td>
                 </tr>
         <?php
             }

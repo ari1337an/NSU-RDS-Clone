@@ -272,7 +272,7 @@
   top:150px;
   left:150px;
 }
-.create_student{
+.create_student, .view_student, .edit_student{
   
   position:relative;
   top:125px;

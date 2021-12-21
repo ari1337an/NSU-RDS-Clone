@@ -23,7 +23,7 @@ function isActiveFacultyHeader($id)
         ?>
             <ul id="sub-header-list">
                 <li <?php isActiveAdminHeader(0); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>admin/index.php">Home</a></li>
-                <li <?php isActiveAdminHeader(1); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>admin/course_list.php">Course List</a></li>
+                <li <?php isActiveAdminHeader(1); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>admin/advising_control.php">Advising Control</a></li>
                 <li <?php isActiveAdminHeader(2); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>admin/create_student.php">Create Student</a></li>
                 <li <?php isActiveAdminHeader(3); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>admin/create_faculty.php">Create Faculty</a></li>
                 <li <?php isActiveAdminHeader(4); ?>><a href="<?php echo $template_vars["get_hierarchy"]; ?>admin/student_list.php">Student List</a></li>

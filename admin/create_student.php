@@ -80,7 +80,7 @@
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <div class="create_student">
+    <div class="container_panel">
         <h3>Create Student</h3>
         <form action="create_student.php" method="post">
         <label >Name:</label><br>
@@ -371,7 +371,9 @@
         </form>
     </div>
     <br>
-        
+    <br>
+    <br>
+    
 
 </body>
 </html>

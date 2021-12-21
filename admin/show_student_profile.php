@@ -32,6 +32,7 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+    <div class="container_panel">
     <div class="view_student">
         <h3>Student Profile Profile</h3>
         <br>
@@ -87,6 +88,8 @@ if (!USERS::isLoggedAdmin()) {
     </div>
     <br>
 
+    </div>
+ 
 
 
 </body>

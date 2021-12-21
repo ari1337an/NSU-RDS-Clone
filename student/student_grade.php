@@ -61,6 +61,8 @@ function letter_to_val($letter){
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+
+    <div class="container_panel">
     <table>
         <tr>
             <th>Course ID</th>
@@ -91,6 +93,8 @@ if(mysqli_num_rows($result) > 0){
 ?>
 
     </table>
+    </div>
+
 
 </body>
 

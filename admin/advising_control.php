@@ -78,7 +78,7 @@
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
         
-    <div class="container_panel container_left_fix">
+    <div class="container_panel">
 
 <?php if(isset($_POST['create_new_course_form']) && $_POST['create_new_course'] == true){?>
 

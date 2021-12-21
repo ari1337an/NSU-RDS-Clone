@@ -36,30 +36,35 @@ if (!USERS::isLoggedStudent()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <table>
-        <tr>
-            <th>Course ID</th>
-            <th>Course Name</th>
-            <th>Take Attandance</th>
-        </tr>
-        <?php
-        $result = $APP_DB->query("
-SELECT t.course_id as 'course_id', c.course_name as 'course_name'
-FROM taking as t JOIN course_list as c ON  t.course_id=c.course_id AND c.offer_status=1 AND t.who_is_taking='" . USERS::getUserName() . "';
-");
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-                <tr>
-                    <td><?php echo $row['course_id']; ?></td>
-                    <td><?php echo $row['course_name'] ?></td>
-                    <td><a href="./check_attendance.php?course_id=<?php echo $row['course_id']; ?>" class="btn">Check</a></td>
-                </tr>
-        <?php
+
+    <div class="container_panel">
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Take Attandance</th>
+            </tr>
+            <?php
+            $result = $APP_DB->query("
+    SELECT t.course_id as 'course_id', c.course_name as 'course_name'
+    FROM taking as t JOIN course_list as c ON  t.course_id=c.course_id AND c.offer_status=1 AND t.who_is_taking='" . USERS::getUserName() . "';
+    ");
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                    <tr>
+                        <td><?php echo $row['course_id']; ?></td>
+                        <td><?php echo $row['course_name'] ?></td>
+                        <td><a href="./check_attendance.php?course_id=<?php echo $row['course_id']; ?>" class="btn">Check</a></td>
+                    </tr>
+            <?php
+                }
             }
-        }
-        ?>
-    </table>
+            ?>
+        </table>
+    </div>
+
+   
 
 </body>
 

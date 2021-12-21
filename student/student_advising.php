@@ -33,10 +33,6 @@ if (!USERS::isLoggedStudent()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <section class="welcome_text">
-        Welcome <?php echo USERS::getUserName(); ?>
-        <div class="welcome_border_bottom"></div>
-    </section>
 
 </body>
 

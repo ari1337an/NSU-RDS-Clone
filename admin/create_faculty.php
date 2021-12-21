@@ -91,7 +91,7 @@
     <?php include "../template/sub_header.php"; ?>
         
    
-    <div class="create_faculty">
+    <div class="container_panel">
         <h3>Create Faculty</h3>
         <form action="create_faculty.php" method="post">
         <label >Name:</label><br>
@@ -372,7 +372,8 @@
         </form>
     </div>
     <br>
-
+    <br>
+    <br>
     
 
     

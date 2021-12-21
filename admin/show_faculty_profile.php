@@ -32,6 +32,8 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+    <div class="container_panel">
+
     <div class="view_faculty">
         <h3>Faculty Profile</h3>
         <br>
@@ -77,6 +79,8 @@ if (!USERS::isLoggedAdmin()) {
     </div>
     <br>
 
+
+    </div>
 
 
 </body>

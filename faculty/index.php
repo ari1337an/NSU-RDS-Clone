@@ -33,9 +33,9 @@ if (!USERS::isLoggedFaculty()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <section class="admin_welcome">
+    <section class="landing_welcome">
         Welcome <?php echo USERS::getUserName(); ?>
-        <div class="admin_welcome_border_bottom"></div>
+        <div class="landing_welcome_border_bottom"></div>
     </section>
 
 

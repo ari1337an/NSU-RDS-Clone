@@ -36,6 +36,8 @@ if (!USERS::isLoggedFaculty()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+    <div class="container_panel">
+
     <table>
         <tr>
             <th>Course ID</th>
@@ -60,6 +62,8 @@ FROM teaches as t JOIN course_list as c ON  t.course_id=c.course_id AND c.offer_
         }
         ?>
     </table>
+    </div>
+
 
 </body>
 

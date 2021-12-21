@@ -74,6 +74,8 @@ if (isset($_POST['password']) && isset($_POST['dept']) && isset($_POST['phone'])
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+
+    <div class="container_panel">
     <div class="edit_faculty">
         <h3>Edit Faculty</h3>
         <br>
@@ -128,6 +130,8 @@ if (isset($_POST['password']) && isset($_POST['dept']) && isset($_POST['phone'])
 
 
 
+
+    </div>
 
 
 

@@ -10,10 +10,8 @@
 .container_panel {
   position: relative;
   top: 88px;
-}
-
-.container_left_fix {
   margin-left: 88px;
+  margin-bottom: 88px;
 }
 
 .message {
@@ -57,48 +55,6 @@
   font-weight: 200;
   background-color: #ebebeb;
 }
-/* delete this commented part if not in use, if it is in use, rename that to sub-header-list */
-/* #Student {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  padding: 5px;
-}
-
-#Student li {
-  width: 150px;
-  margin: 15px;
-  padding: 15px;
-  background-color: #c4c4c4;
-}
-.active,
-#Student li:hover {
-  background-color: #a0b8bf !important;
-}
-#Student a {
-  color: #000;
-}
-
-#Student {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  padding: 5px;
-}
-
-#Student li {
-  width: 150px;
-  margin: 15px;
-  padding: 15px;
-  background-color: #c4c4c4;
-}
-.active,
-#Student li:hover {
-  background-color: #a0b8bf !important;
-}
-#Student a {
-  color: #000;
-} */
 
 /* fixing some naming */
 #sub-header-list {
@@ -199,7 +155,7 @@
 
 /* delete this part if not needed. */
 /* Admin Panel Landings */
-.admin_welcome {
+.landing_welcome {
   position: relative;
   top: 45px;
   padding: 0px 85px;
@@ -207,80 +163,11 @@
   color: #517e99;
 }
 
-.admin_welcome_border_bottom {
+.landing_welcome_border_bottom {
   position: absolute;
   border: 1px solid #000000;
   top: 71px;
   width: 90%;
   left: 5%;
   height: 0px;
-}
-
-/* Faculty_Profile */
-.border {
-  position: absolute;
-  width: 1365px;
-  height: 0px;
-  left: 10px;
-  top: 150px;
-  border: 1px solid #000000;
-}
-
-.nav_bar {
-  position: relative;
-  float: left;
-  top: 50px;
-  left: 73px;
-
-  padding: 0px 20px 0px 20px;
-}
-
-.nav_bar ul {
-  padding: 0;
-  list-style: none;
-}
-.nav_bar ul li {
-  float: left;
-  font: size 20px;
-  font-weight: bold;
-}
-
-.nav_bar ul li a {
-  text-decoration: none;
-  font-size: 20px;
-  background-color: #d9edf7;
-  border: 1px solid #000000;
-  padding: 10px 150px 10px 170px;
-}
-
-.Gen {
-  position: absolute;
-  float: left;
-  top: 350px;
-  left: 100px;
-  color: #478cfa;
-  font-size: 18px;
-  font-weight: bold;
-}
-.profile-user-info {
-  position: absolute;
-  top: 400px;
-  left: 250px;
-  color: #478cfa;
-  font-size: 18px;
-  font-weight: 400;
-}
-.create_faculty,
-.view_faculty,
-.edit_faculty {
-  position: relative;
-  top: 150px;
-  left: 150px;
-}
-.create_student,
-.view_student,
-.edit_student {
-  position: relative;
-  top: 125px;
-  left: 150px;
 }

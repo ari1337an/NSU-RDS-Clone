@@ -33,11 +33,6 @@ if (!USERS::isLoggedStudent()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <section class="welcome_text">
-        Welcome <?php echo USERS::getUserName(); ?>
-        <div class="welcome_border_bottom"></div>
-    </section>
-    <div class="data">
     <?php
 
     $current = USERS::getUserName();
@@ -59,82 +54,24 @@ if (!USERS::isLoggedStudent()) {
     }
 
     ?>
-    <div class="nav_bar">
-      <ul>
-        <li><a href="#">General Infromation</a></li>
-        <li><a href="#">Personal Infromation</a></li>
-      </ul>
 
+
+    <div class="container_panel">
+      <h3>Information</h3>
+      Full Name:<?php echo "  " . $name ?> <br>
+      ID:<?php echo "  " . $id ?> <br>
+      Father's Name:<?php echo "  " . $fathers_name ?> <br>
+      Mother's Name:<?php echo "  " . $mothers_name ?> <br>
+      Department:<?php echo "  " . $dept ?> <br>
+      Degree:<?php echo "  " . $degree ?> <br>
+      CGPA:<?php echo "  " . $cgpa ?> <br>
+      NID:<?php echo "  " . $nid ?> <br>
+      Birth Registration Number:<?php echo "  " . $birth ?> <br>
+      Gender:<?php echo "  " . $gender ?> <br>
+      Citizenship:<?php echo "  " . $citzenship ?> <br>
     </div>
-
-    <br><br>
-
-    <div class="Gen">
-       Information
-    </div>
-
-    <br>
-    <br>
-
-    <div class="profile-user-info">
-      <div class="profile-info-row">
-        <div class="profile-info-name">Full Name:<?php echo "  " . $name ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">ID:<?php echo "  " . $id ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-Degree">Father's Name:<?php echo "  " . $fathers_name ?></div>
-        <div class="profile-info-Degree-name">
-        </div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-Credits">Mother's Name:<?php echo "  " . $mothers_name ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Department:<?php echo "  " . $dept ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Degree:<?php echo "  " . $degree ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Credits:<?php echo "  " . $credits ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">CGPA:<?php echo "  " . $cgpa ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">NID:<?php echo "  " . $nid ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Birth Registration Number:<?php echo "  " . $birth ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Gender:<?php echo "  " . $gender ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Citizenship:<?php echo "  " . $citzenship ?></div>
-      </div>
-
-
-
-
-    </div>
-
 
     
-
 </body>
 
 </html>

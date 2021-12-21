@@ -32,14 +32,7 @@ if (!USERS::isLoggedFaculty()) {
   <?php include "../template/header.php"; ?>
   <?php include "../template/sub_header.php"; ?>
 
-  <section class="welcome_text">
-    Welcome <?php echo USERS::getUserName(); ?>
-    <div class="welcome_border_bottom"></div>
-
-  </section>
-
-  <div class="data">
-    <?php
+  <?php
 
     $current = USERS::getUserName();
     $result = $APP_DB->query("SELECT * FROM faculty_profile WHERE initial= '$current'");
@@ -56,65 +49,18 @@ if (!USERS::isLoggedFaculty()) {
     }
 
     ?>
-    <div class="nav_bar">
-      <ul>
-        <li><a href="#">General Infromation</a></li>
-        <li><a href="#">Personal Infromation</a></li>
-      </ul>
 
-    </div>
-
-    <br><br>
-
-    <div class="Gen">
-      General Information
-    </div>
-
-    <br>
-    <br>
-
-    <div class="profile-user-info">
-      <div class="profile-info-row">
-        <div class="profile-info-name">Full Name:<?php echo "  " . $name ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Faculty Initial:<?php echo "  " . $initial ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-Degree">Department Name:<?php echo "  " . $department_name ?></div>
-        <div class="profile-info-Degree-name">
-        </div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-Credits">Phone Number:<?php echo "  " . $phone_no ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">NID:<?php echo "  " . $nid ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Birth Certificate Number:<?php echo "  " . $birth ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Date of Birth:<?php echo "  " . $date_of_birth ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Gender:<?php echo "  " . $gender ?></div>
-      </div>
-      <br>
-      <div class="profile-info-row">
-        <div class="profile-info-ID">Citizenship:<?php echo "  " . $citzenship ?></div>
-      </div>
-
-
-
-
+    <div class="container_panel">
+      <h3>Information</h3>
+      Full Name:<?php echo "  " . $name ?><br>
+      Faculty Initial:<?php echo "  " . $initial ?><br>
+      Department Name:<?php echo "  " . $department_name ?><br>
+      Phone Number:<?php echo "  " . $phone_no ?><br>
+      NID:<?php echo "  " . $nid ?><br>
+      Birth Certificate Number:<?php echo "  " . $birth ?><br>
+      Date of Birth:<?php echo "  " . $date_of_birth ?><br>
+      Gender:<?php echo "  " . $gender ?><br>
+      Citizenship:<?php echo "  " . $citzenship ?><br>
     </div>
 
 

@@ -51,8 +51,10 @@ if (!USERS::isLoggedStudent()) {
       $nid = $row['nid'];
       $gender = $row['gender'];
       $citzenship = $row['citizenship'];
-    }
 
+     
+    }
+   
     ?>
 
 
@@ -70,6 +72,11 @@ if (!USERS::isLoggedStudent()) {
       Gender:<?php echo "  " . $gender ?> <br>
       Citizenship:<?php echo "  " . $citzenship ?> <br>
     </div>
+
+  
+
+
+
 
     
 </body>

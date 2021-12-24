@@ -14,8 +14,11 @@ require PATH . 'configs/config.database.php';
 require PATH . './library/class.DB.php';
 require PATH . './library/class.Users.php';
 
+
 # Load the Libraries
 $APP_DB = new DB(new CONFIG_DB());
+
+require PATH . './library/class.SETTINGS.php';
 
 # ReConstruct The Site Settings
 if(mysqli_num_rows($APP_DB->query("SELECT * FROM site_settings WHERE settings_name='advising_state'")) == 0){

@@ -11,8 +11,20 @@ if (!USERS::isLoggedStudent()) {
     header("Location: ../index.php");
     exit;
 }
+       $current = USERS::getUserName();
+       $result = $APP_DB->query("SELECT * FROM course_list");
+       $courses = array();
+       while($row = $result->fetch_assoc()){
+           $courses[] = $row; 
+       }
 
+       foreach($courses as $course){
+           echo $course['course_name'];
+       }
+      
 
+      
+  
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +45,30 @@ if (!USERS::isLoggedStudent()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+    <form action="student_advising.php">
+        <select>
+        <?php
+      
+        
+        foreach($courses as $course){
+            ?>
+            <option value="<?php echo $course['course_name'];?>"><?php echo $course['course_name'];?></option>
+            <?php
+        }
+        ?>
+        </select>
 
+        <input type="submit" value="Add" name="Add">
+        <input type="submit" value="Save" name="Save">
+
+    </form>
+    
+
+
+
+    
+
+     
 </body>
 
 </html>

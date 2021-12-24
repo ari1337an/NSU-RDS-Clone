@@ -18,9 +18,7 @@ if (!USERS::isLoggedStudent()) {
            $courses[] = $row; 
        }
 
-       foreach($courses as $course){
-           echo $course['course_name'];
-       }
+     
       
 
       
@@ -52,7 +50,7 @@ if (!USERS::isLoggedStudent()) {
         
         foreach($courses as $course){
             ?>
-            <option value="<?php echo $course['course_name'];?>"><?php echo $course['course_name'];?></option>
+            <option value="<?php echo $course['course_id'];?>"><?php echo $course['course_id'];?></option>
             <?php
         }
         ?>

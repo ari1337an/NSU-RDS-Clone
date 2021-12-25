@@ -18,6 +18,45 @@ if (!USERS::isLoggedStudent()) {
            $courses[] = $row; 
        }
 
+      if(isset($_COOKIE['selected_course'])){
+        $current_courses=json_decode($_COOKIE['selected_course'], true);
+      }
+      else{
+          $current_courses = array();
+      }
+       
+       $course_taken = "";
+       $current = USERS::getUserName();
+     
+       if(isset($_POST['ADD']) && isset($_POST['taken']) ){
+    
+        $course_taken = $_POST['taken'];
+        if(in_array($course_taken,$current_courses) == false){
+            $current_courses[] = $course_taken;
+            setcookie('selected_course',json_encode($current_courses),time()+3600);
+        }
+       }
+       if(isset($_POST['SAVE'])){
+           $selected = json_decode($_COOKIE['selected_course'], true);
+           $flag = 0 ;
+           foreach($selected as $s){
+               $sql = "INSERT INTO taking( course_id, who_is_taking) VALUES ('$s','$current')";
+               if($APP_DB->query($sql) == true ){
+                  $flag = 1;
+               }
+           }
+           if($flag==1){
+               echo "SAVED";
+               setcookie('selected_course',"",time()-100);
+               $current_courses = array();
+           }
+       }
+
+
+      
+       
+       
+
      
       
 
@@ -43,11 +82,10 @@ if (!USERS::isLoggedStudent()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <form action="student_advising.php">
-        <select>
+    <form action="student_advising.php" method = "post">
+        <select name  = "taken">
         <?php
       
-        
         foreach($courses as $course){
             ?>
             <option value="<?php echo $course['course_id'];?>"><?php echo $course['course_id'];?></option>
@@ -56,11 +94,12 @@ if (!USERS::isLoggedStudent()) {
         ?>
         </select>
 
-        <input type="submit" value="Add" name="Add">
-        <input type="submit" value="Save" name="Save">
+        <input type="submit" value="ADD" name="ADD">
+        <input type="submit" value="SAVE" name="SAVE">
 
     </form>
-    
+
+  
 
 
 

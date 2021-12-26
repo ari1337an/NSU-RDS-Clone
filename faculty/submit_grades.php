@@ -120,32 +120,6 @@ function already_has_grade_for_this_student($id, $course_id, $submittedby)
     return mysqli_num_rows($result) == 1;
 }
 
-function calculateCgpa($id)
-{
-    global $APP_DB;
-    $res = $APP_DB->query("
-            SELECT round(avg(grade_value),2) as 'cgpa', count(*) as 'total_course'
-            FROM grades
-            GROUP by given_to
-            HAVING given_to=" . $id);
-    // var_dump($res);
-    $cgpa = 0.0;
-    $total_credit = 0;
-    if (mysqli_num_rows($res) > 0) {
-        $row = mysqli_fetch_assoc($res);
-        $total_course = $row['total_course'];
-        $cgpa = $row['cgpa'];
-        $total_credit = $total_course * 3;
-        echo $cgpa . " " . $total_credit;
-    }
-    $query_grade = $APP_DB->query("
-    UPDATE student_profile
-    SET cgpa=$cgpa, credits=$total_credit
-    WHERE id=$id ");
-    if ($query_grade) {
-        echo "updated grade";
-    }else die("Update Failed!");
-}
 
 
 if (isset($_POST['request_for_grade_change'])) {
@@ -189,7 +163,7 @@ if (isset($_POST['request_for_grade_change'])) {
                     VALUES('" . $form_course_id . "', '" . $form_submitted_by . "', '" . $cur_id . "', " . $val . ");
                 ");
             }
-            calculateCgpa($cur_id);
+            USERS::calculateCgpa($cur_id);
         }
     }
     

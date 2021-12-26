@@ -12,6 +12,8 @@ if (!USERS::isLoggedStudent()) {
     exit;
 }
 
+USERS::calculateCgpa(USERS::getUserName());
+
 
 ?>
 

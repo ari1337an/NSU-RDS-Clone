@@ -20,11 +20,26 @@ class USERS{
     public static function calculateCgpa($id)
     {
         global $APP_DB;
-        $result = $APP_DB->query("
-            select sum(grade_value) as 'total_grade', count(*) as 'total_course'
-            from grades
+        $res = $APP_DB->query("
+            SELECT round(avg(grade_value),2) as 'cgpa', count(*) as 'total_course'
+            FROM grades
             GROUP by given_to
-            HAVING given_to=" . $id . ";
-        ");
+            HAVING given_to=" . $id);
+        // var_dump($res);
+        $cgpa = 0.0;
+        $total_credit = 0;
+        if (mysqli_num_rows($res) > 0) {
+            $row = mysqli_fetch_assoc($res);
+            $total_course = $row['total_course'];
+            $cgpa = $row['cgpa'];
+            $total_credit = $total_course * 3;
+        }
+        $query_grade = $APP_DB->query("
+    UPDATE student_profile
+    SET cgpa=$cgpa, credits=$total_credit
+    WHERE id=$id ");
+        if ($query_grade) {
+            
+        } else die("Update Failed!");
     }
 }

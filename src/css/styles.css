@@ -275,3 +275,32 @@ td a {
 .btn-green:hover {
   background-color: #27ae60;
 }
+
+/* Profile Sample CSS */
+
+.profile_info {
+  display: table;
+  margin-top: 40px;
+}
+
+.profile_info_name,
+.profile_info_row {
+  display: table-cell;
+}
+.profile_info_row {
+  display: table-row;
+}
+
+.profile_info_name {
+  text-align: right;
+  padding: 6px 10px 6px 4px;
+  font-weight: 400;
+  color: #667e99;
+  min-width: 135px;
+  vertical-align: middle;
+}
+
+.profile_info_value {
+  padding-top: 6px;
+  padding-left: 10px;
+}

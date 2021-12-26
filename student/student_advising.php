@@ -75,11 +75,11 @@ if(isset($_POST['SAVE'])){
     exit;
 }
 
-if(isset($_POST['clrcookie'])){
-    setcookie('selected_course',"",time()-100);
-    header("Location: ./student_advising.php");
-    exit;
-}
+// if(isset($_POST['clrcookie'])){
+//     setcookie('selected_course',"",time()-100);
+//     header("Location: ./student_advising.php");
+//     exit;
+// }
 
 if(isset($_GET['delete_course_tmp'])){
     $current_temp_courses = array(); // Clear the list
@@ -189,14 +189,14 @@ if(isset($_GET['delete_course_saved'])){
                 ?>
                 </select>
 
-                <input type="submit" value="ADD" name="ADD"> <br> <br>
-                <input class="btn_save_advising" type="submit" value="SAVE" name="SAVE">
+                <input class="btn btn-green" type="submit" value="ADD" name="ADD"> <br> <br>
+                <input class="btn btn-green" class="btn_save_advising" type="submit" value="SAVE" name="SAVE">
 
             </form>
             
-    <form method="POST">
+    <!-- <form method="POST">
         <input class="btn_clr_tmp_advising" type="submit" name="clrcookie" value="Clear Cookies">
-    </form>
+    </form> -->
         </div>
 
        

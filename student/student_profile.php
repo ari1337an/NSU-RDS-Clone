@@ -59,18 +59,64 @@ if (!USERS::isLoggedStudent()) {
 
 
     <div class="container_panel">
-      <h3>Information</h3>
-      Full Name:<?php echo "  " . $name ?> <br>
-      ID:<?php echo "  " . $id ?> <br>
-      Father's Name:<?php echo "  " . $fathers_name ?> <br>
-      Mother's Name:<?php echo "  " . $mothers_name ?> <br>
-      Department:<?php echo "  " . $dept ?> <br>
-      Degree:<?php echo "  " . $degree ?> <br>
-      CGPA:<?php echo "  " . $cgpa ?> <br>
-      NID:<?php echo "  " . $nid ?> <br>
-      Birth Registration Number:<?php echo "  " . $birth ?> <br>
-      Gender:<?php echo "  " . $gender ?> <br>
-      Citizenship:<?php echo "  " . $citzenship ?> <br>
+      <h2 class"table_desc>Information</h2>
+      <div class="profile_info">
+
+        <div class="profile_info_row">
+          <div class="profile_info_name">Full Name:</div>
+          <div class="profile_info_value"><?php echo $name;?></div>
+        </div>
+
+        <div class="profile_info_row">
+          <div class="profile_info_name">ID:</div>
+          <div class="profile_info_value"><?php echo $id;?></div>
+        </div>
+
+        <div class="profile_info_row">
+          <div class="profile_info_name">Father's Name:</div>
+          <div class="profile_info_value"><?php echo $fathers_name;?></div>
+        </div>
+
+        <div class="profile_info_row">
+          <div class="profile_info_name">Mother's Name:</div>
+          <div class="profile_info_value"><?php echo $mothers_name;?></div>
+        </div>
+
+        <div class="profile_info_row">
+          <div class="profile_info_name">Department:</div>
+          <div class="profile_info_value"><?php echo $dept;?></div>
+        </div>
+        
+        <div class="profile_info_row">
+          <div class="profile_info_name">Degree:</div>
+          <div class="profile_info_value"><?php echo $degree;?></div>
+        </div>
+        
+        <div class="profile_info_row">
+          <div class="profile_info_name">CGPA:</div>
+          <div class="profile_info_value"><?php echo $cgpa;?></div>
+        </div>
+        
+        <div class="profile_info_row">
+          <div class="profile_info_name">NID:</div>
+          <div class="profile_info_value"><?php echo $nid;?></div>
+        </div>
+        
+        <div class="profile_info_row">
+          <div class="profile_info_name">Birth Registration Number:</div>
+          <div class="profile_info_value"><?php echo $birth;?></div>
+        </div>
+
+        <div class="profile_info_row">
+          <div class="profile_info_name">Gender:</div>
+          <div class="profile_info_value"><?php echo $gender;?></div>
+        </div>
+        <div class="profile_info_row">
+          <div class="profile_info_name">Citizenship:</div>
+          <div class="profile_info_value"><?php echo $citzenship;?></div>
+        </div>
+      </div>
+      
     </div>
 
   

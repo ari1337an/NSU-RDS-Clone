@@ -12,10 +12,6 @@ if (!USERS::isLoggedFaculty()) {
     exit;
 }
 
-
-
-
-
 ?>
 
 <!DOCTYPE html>

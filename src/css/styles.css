@@ -14,6 +14,34 @@
   margin-bottom: 88px;
 }
 
+.center_panel {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.left_container {
+  position: absolute;
+  float: left;
+}
+
+.right_container {
+  position: absolute;
+  float: right;
+  right: 200px;
+}
+
+.btn_save_advising {
+  position: absolute;
+  float: left;
+  left: 293px;
+}
+
+.btn_clr_tmp_advising {
+  position: absolute;
+  float: left;
+  left: 0px;
+}
+
 .message {
   position: absolute;
   padding: 50px 0px 0px 80px;

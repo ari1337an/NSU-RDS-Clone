@@ -13,8 +13,6 @@ if (!USERS::isLoggedStudent()) {
 }
 
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +37,16 @@ if (!USERS::isLoggedStudent()) {
         Welcome <?php USERS::getUserName()?>
         <div class="welcome_border_bottom"></div>
     </section>
+
+    <div class="container_panel">
+        <?php 
+
+if(isset($_GET['advising_complete']) && $_GET['advising_complete'] == true){
+    echo "<br>Advising saved!";
+}
+
+        ?>
+    </div>
 
 </body>
 

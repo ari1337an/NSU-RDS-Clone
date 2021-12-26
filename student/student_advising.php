@@ -11,57 +11,92 @@ if (!USERS::isLoggedStudent()) {
     header("Location: ../index.php");
     exit;
 }
-       $current = USERS::getUserName();
-       $result = $APP_DB->query("SELECT * FROM course_list");
-       $courses = array();
-       while($row = $result->fetch_assoc()){
-           $courses[] = $row; 
-       }
 
-      if(isset($_COOKIE['selected_course'])){
-        $current_courses=json_decode($_COOKIE['selected_course'], true);
-      }
-      else{
-          $current_courses = array();
-      }
-       
-       $course_taken = "";
-       $current = USERS::getUserName();
-     
-       if(isset($_POST['ADD']) && isset($_POST['taken']) ){
-    
-        $course_taken = $_POST['taken'];
-        if(in_array($course_taken,$current_courses) == false){
-            $current_courses[] = $course_taken;
-            setcookie('selected_course',json_encode($current_courses),time()+3600);
+// Todo: Check if Adivising is ON and act appropiately 
+
+
+$current_saved_courses = array();
+$current_temp_courses = array();
+
+function load_course_from_db(){
+    global $current_saved_courses, $APP_DB;
+    $current_saved_courses = array(); // clear the list
+    $result = $APP_DB->query("SELECT course_id FROM taking WHERE who_is_taking=".USERS::getUserName()."");
+    while($row = mysqli_fetch_assoc($result)){ 
+        array_push($current_saved_courses, $row['course_id']);
+    }
+}
+
+function load_course_from_cookie(){
+    global $current_temp_courses;
+    $current_temp_courses = array(); // Clear the list
+    if(isset($_COOKIE['selected_course'])){
+        $tmpxx = json_decode($_COOKIE['selected_course'],true);
+        foreach($tmpxx as $tmpp){
+            array_push($current_temp_courses, $tmpp);
         }
-       }
-       if(isset($_POST['SAVE'])){
-           $selected = json_decode($_COOKIE['selected_course'], true);
-           $flag = 0 ;
-           foreach($selected as $s){
-               $sql = "INSERT INTO taking( course_id, who_is_taking) VALUES ('$s','$current')";
-               if($APP_DB->query($sql) == true ){
-                  $flag = 1;
-               }
-           }
-           if($flag==1){
-               echo "SAVED";
-               setcookie('selected_course',"",time()-100);
-               $current_courses = array();
-           }
-       }
+    }
+}
 
+function get_course_name($id){
+    global $APP_DB;
+    $result = $APP_DB->query("SELECT course_name FROM course_list WHERE course_id='".$id."'");
+    return $result->fetch_object()->course_name;
+}
 
-      
-       
-       
+// Load the currently taken courses from the database into the array 
+load_course_from_db();
 
-     
-      
+// Load the currently non saved courses into the array
+load_course_from_cookie();
 
-      
-  
+if(isset($_POST['ADD'])){
+    load_course_from_cookie();
+    if(in_array($_POST['taken'],$current_saved_courses) == false && in_array($_POST['taken'], $current_temp_courses) == false){
+        array_push($current_temp_courses, $_POST['taken']);
+        setcookie('selected_course',json_encode($current_temp_courses),time()+3600);
+        load_course_from_cookie();
+    }
+    header("Location: ./student_advising.php");
+    exit;
+}
+
+if(isset($_POST['SAVE'])){
+    load_course_from_cookie();
+    foreach($current_temp_courses as $s){
+        $APP_DB->query("INSERT INTO taking(course_id, who_is_taking) VALUES ('$s',".USERS::getUserName().")",true);
+    }
+    setcookie('selected_course',"",time()-100);
+    header("Location: ./index.php?advising_complete=true");
+    exit;
+}
+
+if(isset($_POST['clrcookie'])){
+    setcookie('selected_course',"",time()-100);
+    header("Location: ./student_advising.php");
+    exit;
+}
+
+if(isset($_GET['delete_course_tmp'])){
+    $current_temp_courses = array(); // Clear the list
+    if(isset($_COOKIE['selected_course'])){
+        $tmpxx = json_decode($_COOKIE['selected_course'],true);
+        foreach($tmpxx as $tmpp){
+            if($tmpp != $_GET['delete_course_tmp']) array_push($current_temp_courses, $tmpp);
+        }
+    }
+    setcookie('selected_course',json_encode($current_temp_courses),time()+3600);
+    header("Location: ./student_advising.php");
+    exit;
+}
+
+if(isset($_GET['delete_course_saved'])){
+    $current_saved_courses = array(); // clear the list
+    $result = $APP_DB->query("DELETE FROM taking WHERE course_id='".$_GET['delete_course_saved']."' AND who_is_taking=".USERS::getUserName()."");
+    header("Location: ./student_advising.php");
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -82,30 +117,90 @@ if (!USERS::isLoggedStudent()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
-    <form action="student_advising.php" method = "post">
-        <select name  = "taken">
-        <?php
-      
-        foreach($courses as $course){
-            ?>
-            <option value="<?php echo $course['course_id'];?>"><?php echo $course['course_id'];?></option>
-            <?php
-        }
-        ?>
-        </select>
 
-        <input type="submit" value="ADD" name="ADD">
-        <input type="submit" value="SAVE" name="SAVE">
+    <div class="container_panel">
+       <div class="center_panel">
+           <h2>Advising Panel</h2>
+       </div>
+       <div class="left_container">
+            <h3>Course Taken</h3>
+                <?php 
+                $result = $APP_DB->query("
+                    SELECT taking.course_id AS course_id, course_list.course_name as course_name 
+                    FROM taking JOIN course_list ON taking.course_id=course_list.course_id
+                    AND taking.who_is_taking=".USERS::getUserName().";
+                ");
+                if(mysqli_num_rows($result) == 0 && sizeof($current_temp_courses) == 0){
+                    echo "No Course Taken!";
+                }else{
+                    ?>
+                    <table>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Saved</th>
+                            <th>Action</th>
+                        </tr>
+                 <?php  while($row = mysqli_fetch_assoc($result)){ ?>
+                            <tr>
+                                <td><?php echo $row['course_id'];?></td>
+                                <td><?php echo $row['course_name'];?></td>
+                                <td>YES</td>
+                                <td><a href="?delete_course_saved=<?php echo $row['course_id'];?>">Drop & Save</a></td>
+                            </tr>    
+                <?php   }
+                        
+                        load_course_from_cookie();
+                        foreach($current_temp_courses as $course){ ?>
+                            <tr>
+                                <td><?php echo $course; ?></td>
+                                <td><?php echo get_course_name($course); ?></td>
+                                <td>NO</td>
+                                <td><a href="?delete_course_tmp=<?php echo $course; ?>">Delete</a></td>
+                            </tr>             
+                <?php  } ?>
+                    </table>
+                    <?php
+                }
+                ?>
+        </div>
 
+        <div class="right_container">
+             <h3>Select Course</h3>
+            <form action="student_advising.php" method="post">
+                <label for="take">Select What You Want to Take: </label>
+                <select name="taken">
+                <?php
+            
+                $result = $APP_DB->query("SELECT * FROM course_list");
+                $all_courses_list = array();
+                while($row = $result->fetch_assoc()){
+                    $all_courses_list[] = $row; 
+                }
+                foreach($all_courses_list as $course){
+                    ?>
+                    <option value="<?php echo $course['course_id'];?>"><?php echo $course['course_id'];?></option>
+                    <?php
+                }
+                ?>
+                </select>
+
+                <input type="submit" value="ADD" name="ADD"> <br> <br>
+                <input class="btn_save_advising" type="submit" value="SAVE" name="SAVE">
+
+            </form>
+            
+    <form method="POST">
+        <input class="btn_clr_tmp_advising" type="submit" name="clrcookie" value="Clear Cookies">
     </form>
+        </div>
 
-  
+       
+    </div>
 
 
 
-    
 
-     
 </body>
 
 </html>

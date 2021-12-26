@@ -82,7 +82,7 @@
 
 <?php if(isset($_POST['create_new_course_form']) && $_POST['create_new_course'] == true){?>
 
-        <h3>Create A New Course</h3>
+        <h2 class="table_desc">Create A New Course</h2>
         <form method="POST">
             <label for="course_id">Course ID: </label>
             <input type="text" required name="course_id" id="course_id"><br>
@@ -102,8 +102,8 @@
             <label for="OnOff">Is Offering?</label>
             <input type="checkbox" name="OnOff" id="OnOff"><br>
             
-            
-            <input type="submit" name="new_course_create_form" value="Create Course">
+            <br>
+            <input class="btn btn-green" type="submit" name="new_course_create_form" value="Create Course"> <br>
         </form>
 
 <?php }else{ ?>
@@ -117,18 +117,26 @@ function auto_select_this_radio($val){
 }
 ?>
         <form method="POST">
-            <h3>Advising Settings:</h3>
+            <h2 class="table_desc">Advising Settings:</h2>
             <input type="radio" name="advising_state" id="advising_state_off" value="0" <?php auto_select_this_radio(0);?>>
             <label for="advising_state_off">Off</label><br>
             <input type="radio" name="advising_state" id="advising_state_on" value="1" <?php auto_select_this_radio(1);?>>
             <label for="advising_state_off">On</label><br>
             <input type="radio" name="advising_state" id="advising_state_end" value="2" <?php auto_select_this_radio(2);?>>
             <label for="advising_state_off">Ended</label><br>
-            <input type="submit" name="save_advising_settings" value="Save">
+            <input class="btn btn-green" type="submit" name="save_advising_settings" value="Save">
         </form><br><br>
 
-        <h3>Course Settings:</h3>
-        <table>
+        <h2 class="table_desc">Course Settings: 
+            
+        </h2>
+
+        <form method="POST">
+                <input  type="hidden" name="create_new_course" value="true">
+                <input class="btn btn-green" type="submit" name="create_new_course_form" value="Create New Course"><br> <br>
+            </form>
+        
+        <table class="full_page_table">
             <tr>
                 <th>Course ID</th>
                 <th>Course Name</th>
@@ -149,7 +157,24 @@ function auto_select_this_radio($val){
                         <td>
                             <form method="POST">
                                 <input type="hidden" name="toggle_what" value="<?php echo $row['course_id'];?>">
-                                <input type="submit" name="toggle_form" value="<?php echo (($row['offer_status'] == 1) ? "Turn Off" : "Turn On"); ?>">
+                                
+
+                                <?php 
+
+                                if($row['offer_status'] == 1){
+                                    ?>
+                                        <input class="btn btn-red" type="submit" name="toggle_form" value="Turn Off">
+                                    <?php
+                                }else{
+                                    ?>
+                                        <input class="btn btn-green" type="submit" name="toggle_form" value="Turn On">
+                                    <?php
+                                }
+
+
+                                ?>
+                                
+                                
                             </form>
                         </td>
                     </tr>
@@ -158,10 +183,6 @@ function auto_select_this_radio($val){
             ?>
 
         </table><br>
-        <form method="POST">
-            <input type="hidden" name="create_new_course" value="true">
-            <input type="submit" name="create_new_course_form" value="Create New Course">
-        </form>
     
 <?php } ?>
     </div>

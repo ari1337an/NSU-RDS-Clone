@@ -38,7 +38,7 @@ if (!USERS::isLoggedFaculty()) {
 
     <div class="container_panel">
 
-    <table>
+    <table class="full_page_table">
         <tr>
             <th>Course ID</th>
             <th>Course Name</th>

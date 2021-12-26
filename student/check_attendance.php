@@ -43,12 +43,13 @@ if ($count != 1) {
     <div class="container_panel center_panel">
 
 
-    <h3>Attendance For <?php echo $_GET['course_id']; ?></h3>
+    <h2 class="table_desc">Attendance For <?php echo $_GET['course_id']; ?></h2>
 
     <section>
         <form method="POST">
-            <table>
+            <table class="full_page_table">
                 <tr>
+                    <th>Lecture No</th>
                     <th>Submission Date</th>
                     <th>Attended</th>
                 </tr>
@@ -60,16 +61,19 @@ where a.course_id='" . $_GET['course_id'] . "' and a.given_to=" . USERS::getUser
 ");
 
                 if (mysqli_num_rows($result) > 0) {
+                    $counter = 1;
                     while ($row = mysqli_fetch_assoc($result)) {
                         $stat = null;
                         if($row['status'])$stat = "YES";
                         else $stat = "NO";
                 ?>
                         <tr>
+                            <td><?php echo $counter;?></td>
                             <td><?php echo $row['lecture_date']; ?></td>
                             <td><?php echo $stat ?></td>
                         </tr>
                 <?php
+                    $counter++;
                     }
                 }
                 ?>

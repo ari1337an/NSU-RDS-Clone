@@ -81,11 +81,11 @@ if (isset($_POST['request_for_attendance'])) {
     <div class="container_panel center_panel">
 
 
-    <h3>Submitting attendance For <?php echo $_GET['course_id']; ?></h3>
+    <h2 class="table_desc">Submitting attendance For <?php echo $_GET['course_id']; ?></h2>
 
     <section>
         <form method="POST">
-            <table>
+            <table class="full_page_table">
                 <tr>
                     <th>Student ID</th>
                     <th>Student Name</th>
@@ -113,7 +113,9 @@ if (isset($_POST['request_for_attendance'])) {
             </table>
             <input type="hidden" name="form_course_id" value="<?php echo $_GET['course_id']; ?>">
             <input type="hidden" name="form_submitted_by" value="<?php echo USERS::getUserName(); ?>">
-            <input type="submit" name="request_for_attendance" value="Submit">
+            <br>
+            <input class="btn btn-green" style="position: absolute;right: 130px;" type="submit" name="request_for_attendance" value="Submit">
+            
         </form>
     </section>
 

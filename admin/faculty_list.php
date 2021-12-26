@@ -36,7 +36,7 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/sub_header.php"; ?>
 
     <div class="container_panel container_left_fix">
-        <table>
+        <table class="full_page_table">
             <tr>
                 <th>Name</th>
                 <th>Initial</th>

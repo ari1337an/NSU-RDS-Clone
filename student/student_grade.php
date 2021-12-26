@@ -63,7 +63,7 @@ function letter_to_val($letter){
 
 
     <div class="container_panel">
-    <table>
+    <table class="full_page_table">
         <tr>
             <th>Course ID</th>
             <th>Course Name</th>

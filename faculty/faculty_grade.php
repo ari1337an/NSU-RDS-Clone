@@ -34,7 +34,7 @@ if (!USERS::isLoggedFaculty()) {
     <?php include "../template/sub_header.php"; ?>
 
     <div class="container_panel">
-    <table>
+    <table class="full_page_table">
         <tr>
             <th>Course ID</th>
             <th>Course Name</th>

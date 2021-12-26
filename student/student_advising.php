@@ -124,10 +124,10 @@ if(isset($_GET['delete_course_saved'])){
 
     <div class="container_panel">
        <div class="center_panel">
-           <h2>Advising Panel</h2>
+           <h2 class="table_desc">Advising Panel</h2>
        </div>
        <div class="left_container">
-            <h3>Course Taken</h3>
+            <h2 class="table_desc">Course Taken</h2>
                 <?php 
                 $result = $APP_DB->query("
                     SELECT taking.course_id AS course_id, course_list.course_name as course_name 
@@ -138,7 +138,7 @@ if(isset($_GET['delete_course_saved'])){
                     echo "No Course Taken!";
                 }else{
                     ?>
-                    <table>
+                    <table class="full_page_table">
                         <tr>
                             <th>Course ID</th>
                             <th>Course Name</th>
@@ -170,7 +170,7 @@ if(isset($_GET['delete_course_saved'])){
         </div>
 
         <div class="right_container">
-             <h3>Select Course</h3>
+             <h2 class="table_desc">Select Course</h2>
             <form action="student_advising.php" method="post">
                 <label for="take">Select What You Want to Take: </label>
                 <select name="taken">

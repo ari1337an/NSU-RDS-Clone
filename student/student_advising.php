@@ -13,7 +13,11 @@ if (!USERS::isLoggedStudent()) {
 }
 
 // Todo: Check if Adivising is ON and act appropiately 
-
+if(SETTINGS::fetch_settings("advising_state") == 0){
+    die("Advising Hasn't Started Yet!");
+}else if(SETTINGS::fetch_settings("advising_state") == 2){
+    die("Advising Has Ended!");
+}
 
 $current_saved_courses = array();
 $current_temp_courses = array();

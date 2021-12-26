@@ -34,34 +34,66 @@ if (!USERS::isLoggedFaculty()) {
 
   <?php
 
-    $current = USERS::getUserName();
-    $result = $APP_DB->query("SELECT * FROM faculty_profile WHERE initial= '$current'");
-    while ($row = $result->fetch_assoc()) {
-      $name = $row['name'];
-      $initial = $current;
-      $department_name = $row['department_name'];
-      $phone_no = $row['phone_number'];
-      $nid = $row['nid'];
-      $birth = $row['birth_reg_no'];
-      $date_of_birth = $row['dob'];
-      $gender = $row['gender'];
-      $citzenship = $row['citizenship'];
-    }
+  $current = USERS::getUserName();
+  $result = $APP_DB->query("SELECT * FROM faculty_profile WHERE initial= '$current'");
+  while ($row = $result->fetch_assoc()) {
+    $name = $row['name'];
+    $initial = $current;
+    $department_name = $row['department_name'];
+    $phone_no = $row['phone_number'];
+    $nid = $row['nid'];
+    $birth = $row['birth_reg_no'];
+    $date_of_birth = $row['dob'];
+    $gender = $row['gender'];
+    $citzenship = $row['citizenship'];
+  }
 
-    ?>
+  ?>
 
-    <div class="container_panel">
-      <h3>Information</h3>
-      Full Name:<?php echo "  " . $name ?><br>
-      Faculty Initial:<?php echo "  " . $initial ?><br>
-      Department Name:<?php echo "  " . $department_name ?><br>
-      Phone Number:<?php echo "  " . $phone_no ?><br>
-      NID:<?php echo "  " . $nid ?><br>
-      Birth Certificate Number:<?php echo "  " . $birth ?><br>
-      Date of Birth:<?php echo "  " . $date_of_birth ?><br>
-      Gender:<?php echo "  " . $gender ?><br>
-      Citizenship:<?php echo "  " . $citzenship ?><br>
+  <div class="container_panel">
+    <h2 class="table_desc">Information</h2>
+    <div class="profile_info">
+
+      <div class="profile_info_row">
+        <div class="profile_info_name">Full Name:</div>
+        <div class="profile_info_value"><?php echo $name; ?></div>
+      </div>
+
+      <div class="profile_info_row">
+        <div class="profile_info_name">Initial:</div>
+        <div class="profile_info_value"><?php echo $initial; ?></div>
+      </div>
+
+      <div class="profile_info_row">
+        <div class="profile_info_name">Department:</div>
+        <div class="profile_info_value"><?php echo $department_name; ?></div>
+      </div>
+      <div class="profile_info_row">
+        <div class="profile_info_name">Phone:</div>
+        <div class="profile_info_value"><?php echo $phone_no; ?></div>
+      </div>
+
+      <div class="profile_info_row">
+        <div class="profile_info_name">NID:</div>
+        <div class="profile_info_value"><?php echo $nid; ?></div>
+      </div>
+
+      <div class="profile_info_row">
+        <div class="profile_info_name">Birth Registration Number:</div>
+        <div class="profile_info_value"><?php echo $birth; ?></div>
+      </div>
+
+      <div class="profile_info_row">
+        <div class="profile_info_name">Gender:</div>
+        <div class="profile_info_value"><?php echo $gender; ?></div>
+      </div>
+      <div class="profile_info_row">
+        <div class="profile_info_name">Citizenship:</div>
+        <div class="profile_info_value"><?php echo $citzenship; ?></div>
+      </div>
     </div>
+
+  </div>
 
 
 

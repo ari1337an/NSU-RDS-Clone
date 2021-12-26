@@ -78,6 +78,8 @@ if (isset($_POST['request_for_attendance'])) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+    <div class="container_panel center_panel">
+
 
     <h3>Submitting attendance For <?php echo $_GET['course_id']; ?></h3>
 
@@ -117,6 +119,8 @@ if (isset($_POST['request_for_attendance'])) {
 
 
 
+    
+    </div>
 </body>
 
 </html>

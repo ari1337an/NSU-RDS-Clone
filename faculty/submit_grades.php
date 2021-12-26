@@ -218,6 +218,9 @@ if (isset($_POST['request_for_grade_change'])) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+    <div class="container_panel center_panel">
+
+
 
     <h3>Submitting Grades For <?php echo $_GET['course_id']; ?></h3>
 
@@ -256,7 +259,7 @@ if (isset($_POST['request_for_grade_change'])) {
     </section>
 
 
-
+    </div>
 </body>
 
 </html>

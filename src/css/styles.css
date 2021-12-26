@@ -199,3 +199,27 @@
   left: 5%;
   height: 0px;
 }
+
+/* The Final UI Works */
+table,
+th,
+td {
+  border-collapse: collapse;
+  padding: 15px 15px;
+  text-align: center;
+  color: #ecf0f1;
+}
+
+table {
+  overflow-x: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th {
+  background-color: #06265f;
+}
+td {
+  color: #2c3e50;
+  background-color: #ecf0f1;
+}

@@ -40,6 +40,8 @@ if ($count != 1) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+    <div class="container_panel center_panel">
+
 
     <h3>Attendance For <?php echo $_GET['course_id']; ?></h3>
 
@@ -77,6 +79,7 @@ where a.course_id='" . $_GET['course_id'] . "' and a.given_to=" . USERS::getUser
 
 
 
+    </div>
 </body>
 
 </html>

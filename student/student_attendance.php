@@ -37,7 +37,7 @@ if (!USERS::isLoggedStudent()) {
     <?php include "../template/sub_header.php"; ?>
 
 
-    <div class="container_panel">
+    <div class="container_panel center_panel">
         <table>
             <tr>
                 <th>Course ID</th>

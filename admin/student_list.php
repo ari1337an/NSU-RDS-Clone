@@ -36,14 +36,20 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/sub_header.php"; ?>
 
 
-
     <div class="container_panel container_left_fix">
+        <?php
+        if (isset($_GET['search'])) {
+        ?>
+            <div class="left_container">Showing result for <?php echo $_GET['search']; ?></div>
+        <?php
+        }
+        ?>
         <form action="student_list.php" method="get">
             <div class="container-right">
                 <div>
                     <input class="search_input" placeholder="Type ID" type="text" name="search">
                 </div>
-                <input class="btn btn-green" type="submit" value="Search By ID">
+                <input class="btn btn-blue" type="submit" value="Search By ID">
             </div>
         </form>
         <table class="full_page_table">

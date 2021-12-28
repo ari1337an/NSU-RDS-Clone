@@ -84,6 +84,11 @@ USERS::calculateCgpa(USERS::getUserName());
       </div>
 
       <div class="profile_info_row">
+        <div class="profile_info_name">Date of Birth:</div>
+        <div class="profile_info_value"><?php echo $date_of_birth; ?></div>
+      </div>
+
+      <div class="profile_info_row">
         <div class="profile_info_name">Department:</div>
         <div class="profile_info_value"><?php echo $dept; ?></div>
       </div>

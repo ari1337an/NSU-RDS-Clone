@@ -68,6 +68,12 @@ if (!USERS::isLoggedFaculty()) {
         <div class="profile_info_name">Department:</div>
         <div class="profile_info_value"><?php echo $department_name; ?></div>
       </div>
+
+      <div class="profile_info_row">
+        <div class="profile_info_name">Date of Birth:</div>
+        <div class="profile_info_value"><?php echo $date_of_birth; ?></div>
+      </div>
+
       <div class="profile_info_row">
         <div class="profile_info_name">Phone:</div>
         <div class="profile_info_value"><?php echo $phone_no; ?></div>

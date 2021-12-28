@@ -25,6 +25,12 @@ h2 {
   margin-bottom: 40px;
 }
 
+.container-right{
+  display:flex;
+  float: right;
+  margin-bottom: 5px;
+}
+
 .left_container {
   position: absolute;
   float: left;
@@ -237,6 +243,11 @@ td a {
 
 .full_page_table {
   width: 100%;
+}
+.search_input{
+  padding: 15px 15px;
+  margin-right: 3px;
+  align-items:stretch;
 }
 
 .table_desc {

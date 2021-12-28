@@ -35,7 +35,17 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/header.php"; ?>
     <?php include "../template/sub_header.php"; ?>
 
+
+
     <div class="container_panel container_left_fix">
+        <form action="student_list.php" method="get">
+            <div class="container-right">
+                <div>
+                    <input class="search_input" placeholder="Type ID" type="text" name="search">
+                </div>
+                <input class="btn btn-green" type="submit" value="Search By ID">
+            </div>
+        </form>
         <table class="full_page_table">
             <tr>
                 <th>Name</th>
@@ -43,24 +53,41 @@ if (!USERS::isLoggedAdmin()) {
                 <th>Department</th>
                 <th>Profile</th>
             </tr>
-            <?php
-            $result = $APP_DB->query("select name, id, department_name from student_profile order by (id) asc");
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
+            <?php if (isset($_GET['search'])) {
+                $result = $APP_DB->query("select name, id, department_name from student_profile where id LIKE '%" . $_GET['search'] . "%'  order by (id) asc");
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
             ?>
-                    <tr>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['id'] ?></td>
-                        <td><?php echo $row['department_name'] ?></td>
-                        <td><a href="./show_student_profile.php?student_id=<?php echo $row['id']; ?>" class="btn">View</a></td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['id'] ?></td>
+                            <td><?php echo $row['department_name'] ?></td>
+                            <td><a href="./show_student_profile.php?student_id=<?php echo $row['id']; ?>" class="btn">View</a></td>
+                        </tr>
+                <?php
+                    }
+                }
+                ?>
+                <?php
+            } else {
+                $result = $APP_DB->query("select name, id, department_name from student_profile order by (id) asc");
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                        <tr>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['id'] ?></td>
+                            <td><?php echo $row['department_name'] ?></td>
+                            <td><a href="./show_student_profile.php?student_id=<?php echo $row['id']; ?>" class="btn">View</a></td>
+                        </tr>
             <?php
+                    }
                 }
             }
             ?>
         </table>
     </div>
-    
+
 
 </body>
 

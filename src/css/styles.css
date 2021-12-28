@@ -19,6 +19,9 @@ h2 {
   margin-left: 88px;
   margin-right: 88px;
 }
+.container_panel_center {
+  
+}
 
 .center_panel {
   text-align: center;
@@ -276,22 +279,31 @@ td a {
   background-color: #27ae60;
 }
 
+.btn-green-create{
+  margin-left: 450px;
+}
+
 /* Profile Sample CSS */
 
-.profile_info {
+.profile_info,
+.profile_edit {
   display: table;
   margin-top: 40px;
 }
 
 .profile_info_name,
-.profile_info_row {
+.profile_info_row,
+.profile_edit_name,
+.profile_edit_row{
   display: table-cell;
 }
-.profile_info_row {
+.profile_info_row,
+.profile_edit_row {
   display: table-row;
 }
 
-.profile_info_name {
+.profile_info_name,
+.profile_edit_name{
   text-align: right;
   padding: 6px 10px 6px 4px;
   font-weight: 400;
@@ -300,7 +312,9 @@ td a {
   vertical-align: middle;
 }
 
-.profile_info_value {
+.profile_info_value,
+.profile_edit_input {
   padding-top: 6px;
   padding-left: 10px;
 }
+

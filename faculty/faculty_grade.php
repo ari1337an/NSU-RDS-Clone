@@ -38,7 +38,7 @@ if (!USERS::isLoggedFaculty()) {
         <tr>
             <th>Course ID</th>
             <th>Course Name</th>
-            <th>Take Attandance</th>
+            <th>Submit Grades</th>
         </tr>
 <?php 
 $result = $APP_DB->query("

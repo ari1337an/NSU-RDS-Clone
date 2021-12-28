@@ -19,9 +19,6 @@ h2 {
   margin-left: 88px;
   margin-right: 88px;
 }
-.container_panel_center {
-  
-}
 
 .center_panel {
   text-align: center;
@@ -286,7 +283,8 @@ td a {
 /* Profile Sample CSS */
 
 .profile_info,
-.profile_edit {
+.profile_edit,
+.course_assign {
   display: table;
   margin-top: 40px;
 }
@@ -294,16 +292,20 @@ td a {
 .profile_info_name,
 .profile_info_row,
 .profile_edit_name,
-.profile_edit_row{
+.profile_edit_row,
+.course_assign_name,
+.course_assign_row{
   display: table-cell;
 }
 .profile_info_row,
-.profile_edit_row {
+.profile_edit_row,
+.course_assign_row {
   display: table-row;
 }
 
 .profile_info_name,
-.profile_edit_name{
+.profile_edit_name,
+.course_assign_name{
   text-align: right;
   padding: 6px 10px 6px 4px;
   font-weight: 400;
@@ -313,7 +315,8 @@ td a {
 }
 
 .profile_info_value,
-.profile_edit_input {
+.profile_edit_input,
+.course_assign_input {
   padding-top: 6px;
   padding-left: 10px;
 }

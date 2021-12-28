@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2021 at 05:21 PM
+-- Generation Time: Dec 28, 2021 at 05:50 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -47,25 +47,26 @@ INSERT INTO `admins` (`ID`, `USERNAME`, `PASSWORD`) VALUES
 --
 
 CREATE TABLE `attendance` (
-  `trace_id` int(10) NOT NULL,
   `course_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `submitted_by` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `given_to` int(11) DEFAULT NULL,
+  `submitted_by` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `given_to` int(11) NOT NULL,
   `is_present` bit(1) DEFAULT NULL,
-  `at_which_date` date DEFAULT NULL
+  `at_which_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `attendance`
 --
 
-INSERT INTO `attendance` (`trace_id`, `course_id`, `submitted_by`, `given_to`, `is_present`, `at_which_date`) VALUES
-(1, 'CSE311', 'MKN1', 2011188642, b'0', '2021-12-18'),
-(2, 'CSE311', 'MKN1', 2011084642, b'1', '2021-12-18'),
-(3, 'CSE311', 'MKN1', 1721084642, b'1', '2021-12-18'),
-(4, 'CSE311', 'MKN1', 2011188642, b'0', '2021-12-18'),
-(5, 'CSE311', 'MKN1', 2011084642, b'1', '2021-12-18'),
-(6, 'CSE311', 'MKN1', 1721084642, b'1', '2021-12-18');
+INSERT INTO `attendance` (`course_id`, `submitted_by`, `given_to`, `is_present`, `at_which_date`) VALUES
+('CSE311', 'MKN1', 1721084642, b'1', '2021-12-27'),
+('CSE311', 'MKN1', 1721084642, b'1', '2021-12-28'),
+('CSE311', 'MKN1', 1911110642, b'1', '2021-12-27'),
+('CSE311', 'MKN1', 1911110642, b'0', '2021-12-28'),
+('CSE311', 'MKN1', 2011084642, b'0', '2021-12-27'),
+('CSE311', 'MKN1', 2011084642, b'1', '2021-12-28'),
+('CSE311', 'MKN1', 2011188642, b'1', '2021-12-27'),
+('CSE311', 'MKN1', 2011188642, b'1', '2021-12-28');
 
 -- --------------------------------------------------------
 
@@ -135,7 +136,7 @@ CREATE TABLE `faculty_profile` (
 --
 
 INSERT INTO `faculty_profile` (`name`, `initial`, `department_name`, `phone_number`, `nid`, `birth_reg_no`, `dob`, `gender`, `citizenship`) VALUES
-('Asad Uz Zaman', 'AUZ', 'PHY', '1234564', '123456745', '12345675545', '2021-12-06', 'M', 'Canadian'),
+('Asad Uz Zaman', 'AUZ', 'PHY', '123', '123456744', '12345675545', '2021-12-06', 'M', 'Canadian'),
 ('Mostafa kamal nasir', 'MKN1', 'ECE', '01711111111', '1111111111', '99999999999', '1979-11-11', 'M', 'Bangladeshi'),
 ('Syed Hussain Mahmud', 'SMH2', 'ECE', '1234567', '121324354', '232543624325', '2021-12-01', 'M', 'Bangladeshi');
 
@@ -146,10 +147,9 @@ INSERT INTO `faculty_profile` (`name`, `initial`, `department_name`, `phone_numb
 --
 
 CREATE TABLE `grades` (
-  `trace_id` int(10) NOT NULL,
   `course_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `submitted_by` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `given_to` int(11) DEFAULT NULL,
+  `submitted_by` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `given_to` int(11) NOT NULL,
   `grade_value` decimal(2,1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -157,11 +157,12 @@ CREATE TABLE `grades` (
 -- Dumping data for table `grades`
 --
 
-INSERT INTO `grades` (`trace_id`, `course_id`, `submitted_by`, `given_to`, `grade_value`) VALUES
-(8, 'CSE311', 'MKN1', 2011188642, '4.0'),
-(10, 'CSE311', 'MKN1', 1721084642, '3.7'),
-(11, 'CSE332', 'MKN1', 2011084642, '4.0'),
-(12, 'CSE311', 'MKN1', 2011084642, '3.3');
+INSERT INTO `grades` (`course_id`, `submitted_by`, `given_to`, `grade_value`) VALUES
+('CSE311', 'MKN1', 1721084642, '1.7'),
+('CSE311', 'MKN1', 1911110642, '4.0'),
+('CSE311', 'MKN1', 2011084642, '3.3'),
+('CSE311', 'MKN1', 2011188642, '4.0'),
+('CSE332', 'MKN1', 2011084642, '4.0');
 
 -- --------------------------------------------------------
 
@@ -179,7 +180,7 @@ CREATE TABLE `site_settings` (
 --
 
 INSERT INTO `site_settings` (`settings_name`, `settings_value`) VALUES
-('advising_state', '0');
+('advising_state', '1');
 
 -- --------------------------------------------------------
 
@@ -232,11 +233,11 @@ CREATE TABLE `student_profile` (
 --
 
 INSERT INTO `student_profile` (`id`, `name`, `fathers_name`, `mothers_name`, `department_name`, `degree`, `credits`, `cgpa`, `phone_number`, `nid`, `birth_reg_no`, `dob`, `gender`, `citizenship`) VALUES
-(1721084642, 'XYZ ABC', 'GHJ ABC', 'IOS ABC', 'ECE', 'CSE', 100, '2.50', '1212121212', '1212121212121212', '12121212121212', '2021-12-06', 'F', 'Bangladeshi'),
-(1911110642, 'sdsd sdsd sdsd', 'sdsd sdsds', 'sdsd sdsdsdsd', 'ECE', 'sds', 100, '4.00', '121212121234', '121212121234121212121234121212121234', '121212121234121212121234', '2021-12-02', 'M', 'Bangladeshi'),
-(2011084642, 'Md Sahadul Hasan Arian', 'Md Abdul Wahab', 'Mrs Rabia Wahab', 'ECE', 'CSE', 66, '1.00', '1212343', '32325452354443454', '323254523544434542323', '2021-11-03', 'M', 'Bangladeshi'),
+(1721084642, 'XYZ ABC', 'GHJ ABC', 'IOS ABC', 'ECE', 'CSE', 3, '1.70', '1212121212', '1212121212121212', '12121212121212', '2021-12-06', 'F', 'Bangladeshi'),
+(1911110642, 'sdsd sdsd sdsd', 'sdsd sdsds', 'sdsd sdsdsdsd', 'ECE', 'sds', 3, '4.00', '121212121234', '121212121234121212121234121212121234', '121212121234121212121234', '2021-12-02', 'M', 'Bangladeshi'),
+(2011084642, 'Md Sahadul Hasan Arian', 'Md', 'Mrs', 'ECE', 'CSE', 6, '3.65', '1212343', '32325452354443457', '323254523544434542323', '2021-11-03', 'M', 'Bangladeshi'),
 (2011111111, 'sdfsdf sdfasdfsd', 'sdfsadf asdfsdf', 'sdfsadf asdfasdf', 'sds', 'sdd', 100, '2.50', '12345672', '1234567212345672', '123456721234567212345672', '2021-12-02', 'M', 'Bangladeshi'),
-(2011188642, 'Faisal Ahmed Sifat', 'Md. Nurur Zaman', 'Mst. Josna Begum', 'ECE', 'CSE', 47, '3.10', '01887397067', '123456789', '987654321', '2000-09-04', 'M', 'Bangladeshi'),
+(2011188642, 'Faisal Ahmed Sifat', 'Md. Nurur Zaman', 'Mst. Josna Begum', 'ECE', 'CSE', 3, '4.00', '01887397067', '123456789', '987654321', '2000-09-04', 'M', 'Bangladeshi'),
 (2022222222, 'wsdfsdf sdfsdf', 'sdfs sfsfds sdfsdf', 'sfsdfsd sdfsdf ssd', 'PHY', 'sds', 88, '1.00', '23232', '23232232323223', '232322323232232323223', '2021-12-06', 'M', 'Bangladeshi');
 
 -- --------------------------------------------------------
@@ -246,7 +247,6 @@ INSERT INTO `student_profile` (`id`, `name`, `fathers_name`, `mothers_name`, `de
 --
 
 CREATE TABLE `taking` (
-  `trace_id` int(10) NOT NULL,
   `course_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `who_is_taking` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -255,12 +255,17 @@ CREATE TABLE `taking` (
 -- Dumping data for table `taking`
 --
 
-INSERT INTO `taking` (`trace_id`, `course_id`, `who_is_taking`) VALUES
-(1, 'CSE311', 2011188642),
-(2, 'CSE311', 2011084642),
-(3, 'CSE311', 1721084642),
-(4, 'CSE332', 2011188642),
-(5, 'CSE332', 2011084642);
+INSERT INTO `taking` (`course_id`, `who_is_taking`) VALUES
+('CSE311', 1721084642),
+('CSE311', 1911110642),
+('CSE311', 2011084642),
+('CSE311', 2011188642),
+('CSE332', 2011084642),
+('CSE332', 2011188642),
+('CSE373', 2011084642),
+('MAT120', 2011084642),
+('MAT130', 2011084642),
+('MAT350', 2011084642);
 
 -- --------------------------------------------------------
 
@@ -301,7 +306,7 @@ ALTER TABLE `admins`
 -- Indexes for table `attendance`
 --
 ALTER TABLE `attendance`
-  ADD PRIMARY KEY (`trace_id`),
+  ADD PRIMARY KEY (`course_id`,`submitted_by`,`given_to`,`at_which_date`) USING BTREE,
   ADD KEY `course_id` (`course_id`),
   ADD KEY `given_to` (`given_to`),
   ADD KEY `submitted_by` (`submitted_by`);
@@ -331,7 +336,7 @@ ALTER TABLE `faculty_profile`
 -- Indexes for table `grades`
 --
 ALTER TABLE `grades`
-  ADD PRIMARY KEY (`trace_id`),
+  ADD PRIMARY KEY (`course_id`,`submitted_by`,`given_to`) USING BTREE,
   ADD KEY `course_id` (`course_id`),
   ADD KEY `given_to` (`given_to`),
   ADD KEY `submitted_by` (`submitted_by`);
@@ -360,7 +365,7 @@ ALTER TABLE `student_profile`
 -- Indexes for table `taking`
 --
 ALTER TABLE `taking`
-  ADD PRIMARY KEY (`trace_id`),
+  ADD PRIMARY KEY (`course_id`,`who_is_taking`) USING BTREE,
   ADD KEY `course_id` (`course_id`),
   ADD KEY `who_is_taking` (`who_is_taking`);
 
@@ -380,24 +385,6 @@ ALTER TABLE `teaches`
 --
 ALTER TABLE `admins`
   MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `attendance`
---
-ALTER TABLE `attendance`
-  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `grades`
---
-ALTER TABLE `grades`
-  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `taking`
---
-ALTER TABLE `taking`
-  MODIFY `trace_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

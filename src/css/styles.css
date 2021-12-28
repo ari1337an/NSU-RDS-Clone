@@ -341,3 +341,36 @@ td a {
   padding-left: 10px;
 }
 
+.avatar-details{
+  display: flex;
+  align-items: center;
+  font-family: "Roboto",sans-serif;
+  /* justify-content:center; */
+  padding: 20px;
+  margin-top: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-bottom: 1px solid #bec5c4;
+  /* background-color: #27ae60; */
+  
+}
+.user-avatar{
+  border-radius: 50% !important;
+}
+.user-details{
+  margin-left: 180px;
+}
+.user-name{
+  font-weight: 600;
+  font-size: 32px;
+  color:#517e99;
+}
+.user-email>a{
+  color:#667e99;
+  font-size: 18px;
+}
+.user-id{
+  font-weight: 400;
+  font-size: 20px;
+  color: #667e99;
+}

@@ -79,64 +79,80 @@ if (isset($_POST['password']) && isset($_POST['dept']) && isset($_POST['phone'])
 
 
     <div class="container_panel">
-
-    <div class="edit_student">
-        <h3>Edit Faculty</h3>
-        <br>
-        <form action="edit_student_profile.php" method="post">
-            <?php
-            $student_id = $_POST['form_submitted_for'];
-            $password_res = $APP_DB->query("
+        <h2 class="table_desc">Edit Student Profile</h2>
+        <div class="profile_edit">
+            <form action="edit_student_profile.php" method="post">
+                <?php
+                $student_id = $_POST['form_submitted_for'];
+                $password_res = $APP_DB->query("
             SELECT PASSWORD from students where USERNAME=" . $_POST['form_submitted_for'] . "
             ");
-            $pass = null;
-            if (mysqli_num_rows($password_res) == 1) {
-                while ($row = mysqli_fetch_assoc($password_res)) {
-                    $pass = $row['PASSWORD'];
+                $pass = null;
+                if (mysqli_num_rows($password_res) == 1) {
+                    while ($row = mysqli_fetch_assoc($password_res)) {
+                        $pass = $row['PASSWORD'];
+                    }
                 }
-            }
-            $result = $APP_DB->query("
+                $result = $APP_DB->query("
     SELECT * from student_profile where id=" . $_POST['form_submitted_for'] . "
 ");
 
-            if (mysqli_num_rows($result) > 0) {
-                while ($val = mysqli_fetch_assoc($result)) {
-            ?>
+                if (mysqli_num_rows($result) > 0) {
+                    while ($val = mysqli_fetch_assoc($result)) {
+                ?>
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Full Name:</div>
+                            <div class="profile_info_value"><?php echo $val['name']; ?></div>
+                        </div>
 
-                    <label>Name: <?php echo $val['name'] ?></label><br>
-                    <br>
-                    <label>ID: <?php echo $val['id'] ?></label><br>
-                    <!-- <input type="text" name="initial" value=required><br> -->
-                    <br>
-                    <label>Father's name:</label><br>
-                    <input type="text" name="fathers_name" value=<?php echo $val['fathers_name'] ?> required><br>
-                    <label>Mother's name:</label><br>
-                    <input type="text" name="mothers_name" value=<?php echo $val['mothers_name'] ?> required><br>
-                    <label>Password:</label><br>
-                    <input type="password" name="password" value=<?php echo $pass ?> required><br>
-                    <label>Department Name:</label><br>
-                    <input type="text" name="dept" value=<?php echo $val['department_name'] ?> required><br>
-                    <label>Phone No:</label><br>
-                    <input type="text" name="phone" value=<?php echo $val['phone_number'] ?> required><br>
-                    <label>Degree:</label><br>
-                    <input type="text" name="degree" value=<?php echo $val['degree'] ?> required><br>
-                    <label>NID:</label><br>
-                    <input type="text" name="nid" value=<?php echo $val['nid'] ?> required><br>
-                    <label>Birth Registration Number:</label><br>
-                    <input type="text" name="birth_reg_no" value=<?php echo $val['birth_reg_no'] ?> required><br>
-                    <br>
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">ID:</div>
+                            <div class="profile_info_value"><?php echo $val['id']; ?></div>
+                        </div>
+                        <div class="profile_edit_row">
+                            <label class="profile_edit_name">Father's Name:</label>
+                            <input class="profile_edit_input" type="text" name="fathers_name" value=<?php echo $val['fathers_name'] ?> required><br>
+                        </div>
+
+                        <div class="profile_edit_row">
+                            <label class="profile_edit_name">Mother's Name:</label>
+                            <input class="profile_edit_input" type="text" name="mothers_name" value=<?php echo $val['mothers_name'] ?> required><br>
+                        </div>
+                        <div class="profile_edit_row">
+                            <label class="profile_edit_name">Password:</label>
+                            <input class="profile_edit_input" type="password" name="password" value=<?php echo $pass ?> required><br>
+                        </div>
+                        <div class="profile_edit_row">
+                            <label class="profile_edit_name">Department Name:</label>
+                            <input class="profile_edit_input" type="text" name="dept" value=<?php echo $val['department_name'] ?> required><br>
+                        </div>
+
+                        <div class="profile_edit_row">
+                            <label class="profile_edit_name">Degree:</label>
+                            <input class="profile_edit_input" type="text" name="degree" value=<?php echo $val['degree'] ?> required><br>
+                        </div>
+                        <div class="profile_edit_row">
+                            <label class="profile_edit_name">Phone No:</label>
+                            <input class="profile_edit_input" type="text" name="phone" value=<?php echo $val['phone_number'] ?> required><br>
+                        </div>
+                        <div class="profile_edit_row">
+                            <label class="profile_edit_name">NID:</label>
+                            <input class="profile_edit_input" type="text" name="nid" value=<?php echo $val['nid'] ?> required><br>
+                        </div>
+                        <div class="profile_edit_row">
+                            <label class="profile_edit_name">Birth Registration Number:</label>
+                            <input class="profile_edit_input" type="text" name="birth_reg_no" value=<?php echo $val['birth_reg_no'] ?> required><br>
+                        </div>
 
 
-            <?php
+                <?php
+                    }
                 }
-            }
-            ?>
-            <input type="hidden" name="form_submitted_for" value="<?php echo $student_id; ?>">
-            <input type="submit" value="Update">
-
-        </form>
-    </div>
-    <br>
+                ?>
+                <input type="hidden" name="form_submitted_for" value="<?php echo $student_id; ?>">
+                <input class="btn btn-green btn-green-create" type="submit" value="Update">
+            </form>
+        </div>
 
 
 

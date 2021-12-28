@@ -33,63 +33,95 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/sub_header.php"; ?>
 
     <div class="container_panel">
-    <div class="view_student">
-        <h3>Student Profile Profile</h3>
-        <br>
-        <form action="edit_student_profile.php" method="post">
-            <?php
-            $result = $APP_DB->query("
+        <h2 class="table_desc">Student Profile</h2>
+        <div class="profile_info">
+            <form action="edit_student_profile.php" method="post">
+                <?php
+                $result = $APP_DB->query("
     SELECT * from student_profile where id='" . $_GET['student_id'] . "';
 ");
 
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-            ?>
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
 
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Full Name:</div>
+                            <div class="profile_info_value"><?php echo $row['name']; ?></div>
+                        </div>
 
-                    <label>Name: <?php echo $row['name'] ?></label><br>
-                    <br>
-                    <label>ID: <?php echo $row['id'] ?></label><br>
-                    <br>
-                    <label>Father's name: <?php echo $row['fathers_name'] ?></label><br>
-                    <br>
-                    <label>Mother's name: <?php echo $row['mothers_name'] ?></label><br>
-                    <br>
-                    <label>Date of Birth: <?php echo $row['dob'] ?></label><br>
-                    <br>
-                    <label>Department Name: <?php echo $row['department_name'] ?></label><br>
-                    <br>
-                    <label>Phone No: <?php echo $row['phone_number'] ?></label><br>
-                    <br>
-                    <label>NID: <?php echo $row['nid'] ?></label><br>
-                    <br>
-                    <label>Birth Registration Number: <?php echo $row['birth_reg_no'] ?></label><br>
-                    <br>
-                    <label>Gender: <?php echo $row['gender'] ?></label><br>
-                    <br>
-                    <label>citizenship: <?php echo $row['citizenship'] ?></label><br>
-                    <br>
-                    <label>Degree: <?php echo $row['degree'] ?></label><br>
-                    <br>
-                    <label>Credits: <?php echo $row['credits'] ?></label><br>
-                    <br>
-                    <label>CGPA: <?php echo $row['cgpa'] ?></label><br>
-                    <br>
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">ID:</div>
+                            <div class="profile_info_value"><?php echo $row['id']; ?></div>
+                        </div>
 
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Father's Name:</div>
+                            <div class="profile_info_value"><?php echo $row['fathers_name']; ?></div>
+                        </div>
 
-            <?php
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Mother's Name:</div>
+                            <div class="profile_info_value"><?php echo $row['mothers_name']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Date of Birth:</div>
+                            <div class="profile_info_value"><?php echo $row['dob']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Department:</div>
+                            <div class="profile_info_value"><?php echo $row['department_name']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Degree:</div>
+                            <div class="profile_info_value"><?php echo $row['degree']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">CGPA:</div>
+                            <div class="profile_info_value"><?php echo $row['cgpa']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Phone:</div>
+                            <div class="profile_info_value"><?php echo $row['phone_number']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">NID:</div>
+                            <div class="profile_info_value"><?php echo $row['nid']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Birth Registration Number:</div>
+                            <div class="profile_info_value"><?php echo $row['birth_reg_no']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Gender:</div>
+                            <div class="profile_info_value"><?php echo $row['gender']; ?></div>
+                        </div>
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Citizenship:</div>
+                            <div class="profile_info_value"><?php echo $row['citizenship']; ?></div>
+                        </div>
+
+                <?php
+                    }
                 }
-            }
-            ?>
-            <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['student_id']; ?>">
-            <input type="submit" name="request_for_edit" value="Edit Profile">
+                ?>
+                <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['student_id']; ?>">
+                <input class="btn btn-green btn-green-create" type="submit" name="request_for_edit" value="Edit Profile">
 
-        </form>
-    </div>
-    <br>
+            </form>
+        </div>
+        <br>
 
     </div>
- 
+
 
 
 </body>

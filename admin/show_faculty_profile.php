@@ -33,49 +33,74 @@ if (!USERS::isLoggedAdmin()) {
     <?php include "../template/sub_header.php"; ?>
 
     <div class="container_panel">
-
-    <div class="view_faculty">
-        <h3>Faculty Profile</h3>
-        <br>
-        <form action="edit_faculty_profile.php" method="post">
-            <?php
-            $result = $APP_DB->query("
+        <h2 class="table_desc">Faculty Profile</h2>
+        <div class="profile_info">
+            <form action="edit_faculty_profile.php" method="post">
+                <?php
+                $result = $APP_DB->query("
     SELECT * from faculty_profile where initial='" . $_GET['faculty_initial'] . "';
 ");
 
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-
- 
-                    <label>Name: <?php echo $row['name'] ?></label><br>
-                    <br>
-                    <label>Initial: <?php echo $row['initial'] ?></label><br>
-                    <br>
-                    <label>Date of Birth: <?php echo $row['dob'] ?></label><br>
-                    <br>
-                    <label>Department Name: <?php echo $row['department_name'] ?></label><br>
-                    <br>
-                    <label>Phone No: <?php echo $row['phone_number'] ?></label><br>
-                    <br>
-                    <label>NID: <?php echo $row['nid'] ?></label><br>
-                    <br>
-                    <label>Birth Registration Number: <?php echo $row['birth_reg_no'] ?></label><br>
-                    <br>
-                    <label>Gender: <?php echo $row['gender'] ?></label><br>
-                    <br>
-                    <label>citizenship: <?php echo $row['citizenship'] ?></label><br>
-                    <br>
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
 
 
-            <?php
+
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Full Name:</div>
+                            <div class="profile_info_value"><?php echo $row['name']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Initial:</div>
+                            <div class="profile_info_value"><?php echo $row['initial']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Department:</div>
+                            <div class="profile_info_value"><?php echo $row['department_name']; ?></div>
+                        </div>
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Phone:</div>
+                            <div class="profile_info_value"><?php echo $row['phone_number']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">NID:</div>
+                            <div class="profile_info_value"><?php echo $row['nid']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Birth Registration Number:</div>
+                            <div class="profile_info_value"><?php echo $row['birth_reg_no']; ?></div>
+                        </div>
+
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Gender:</div>
+                            <div class="profile_info_value"><?php echo $row['gender']; ?></div>
+                        </div>
+                        <div class="profile_info_row">
+                            <div class="profile_info_name">Citizenship:</div>
+                            <div class="profile_info_value"><?php echo $row['citizenship']; ?></div>
+                        </div>
+
+
+
+
+
+                <?php
+                    }
                 }
-            }
-            ?>
-            <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['faculty_initial']; ?>">
-            <input type="submit" name="request_for_edit" value="Edit Profile">
+                ?>
+                <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['faculty_initial']; ?>">
+                <input class="btn btn-green btn-green-create" type="submit" name="request_for_edit" value="Edit Profile">
+        </div>
 
-        </form>
+    </div>
+
+    </form>
     </div>
     <br>
 

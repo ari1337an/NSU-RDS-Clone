@@ -68,6 +68,8 @@ function letter_to_val($letter){
             <th>Course ID</th>
             <th>Course Name</th>
             <th>Grade</th>
+            <th>GPA</th>
+
         </tr>
 
 <?php 
@@ -78,13 +80,20 @@ $result = $APP_DB->query("
     WHERE given_to='".USERS::getUserName()."';
 ");
 
+$current = USERS::getUserName();
+
+
 if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
+        
         ?>
+           
             <tr>
                 <td><?php echo $row['course_id'];?></td>
                 <td><?php echo $row['course_name'];?></td>
                 <td><?php echo val_to_letter($row['grade_value']);?></td>
+                <td><?php echo $row['grade_value']?></td>
+               
             </tr>
         <?php
     }

@@ -147,6 +147,19 @@ function get_fac_teach_name($course_id)
                 <input class="btn btn-green" type="submit" name="create_new_course_form" value="Create New Course"><br> <br>
             </form>
 
+            <form action="advising_control.php" method="get">
+            <div class="container-right">
+                <div>
+                    <input class="search_input" placeholder="Type Course ID" type="text" name="search">
+                </div>
+                <input class="btn btn-blue" type="submit" value="Search By ID">
+            </div>
+        </form>
+
+        
+
+
+
             <table class="full_page_table">
                 <tr>
                     <th>Course ID</th>
@@ -157,6 +170,50 @@ function get_fac_teach_name($course_id)
                 </tr>
 
                 <?php
+                if (isset($_GET['search']) && $_GET['search'] != "") {
+                    $result = $APP_DB->query("SELECT course_id, course_name, offer_status from course_list WHERE course_id LIKE '%" . $_GET['search'] . "%'  order by  course_name");
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                            <tr>
+                                <td><?php echo $row['course_id']; ?></td>
+                                <td><?php echo $row['course_name'] ?></td>
+                                <td><?php echo $row['offer_status'] ?></td>
+                                <td><?php echo get_fac_teach_name($row['course_id']); ?></td>
+                                <td>
+                            <form method="POST">
+                                <input type="hidden" name="toggle_what" value="<?php echo $row['course_id']; ?>">
+
+
+                                <?php
+
+                                if ($row['offer_status'] == 1) {
+                                ?>
+                                    <input class="btn btn-red" type="submit" name="toggle_form" value="Turn Off">
+                                <?php
+                                } else {
+                                ?>
+                                    <input class="btn btn-green" type="submit" name="toggle_form" value="Turn On">
+                                <?php
+                                }
+
+
+                                ?>
+
+
+                            </form>
+                        </td>
+                               
+                            </tr>
+                    <?php
+                        }
+                    }
+                    ?>
+                    <?php
+                }
+
+                else{
+               
                 $result = $APP_DB->query("SELECT * FROM course_list");
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
@@ -189,6 +246,8 @@ function get_fac_teach_name($course_id)
                             </form>
                         </td>
                     </tr>
+                    <?php } ?>
+                    
                 <?php
                 }
                 ?>

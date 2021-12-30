@@ -37,7 +37,7 @@ if (!USERS::isLoggedAdmin()) {
 
     <div class="container_panel container_left_fix">
         <?php
-        if (isset($_GET['search'])) {
+        if (isset($_GET['search']) && $_GET['search'] != "") {
         ?>
             <div class="left_container">Showing result for <?php echo $_GET['search']; ?></div>
         <?php
@@ -58,7 +58,7 @@ if (!USERS::isLoggedAdmin()) {
                 <th>Department</th>
                 <th>Profile</th>
             </tr>
-            <?php if (isset($_GET['search'])) {
+            <?php if (isset($_GET['search']) && $_GET['search'] != "") {
                 $result = $APP_DB->query("select name, initial, department_name from faculty_profile where initial LIKE '%" . $_GET['search'] . "%'  order by  initial");
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {

@@ -59,7 +59,7 @@ if (!USERS::isLoggedAdmin()) {
                 <th>Department</th>
                 <th>Profile</th>
             </tr>
-            <?php if (isset($_GET['search'])) {
+            <?php if (isset($_GET['search']) && $_GET['search'] != "") {
                 $result = $APP_DB->query("select name, id, department_name from student_profile where id LIKE '%" . $_GET['search'] . "%'  order by (id) asc");
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {

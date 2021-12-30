@@ -38,7 +38,7 @@ if (!USERS::isLoggedAdmin()) {
 
     <div class="container_panel container_left_fix">
         <?php
-        if (isset($_GET['search'])) {
+        if (isset($_GET['search']) && $_GET['search'] != "") {
         ?>
             <div class="left_container">Showing result for <?php echo $_GET['search']; ?></div>
         <?php

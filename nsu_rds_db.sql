@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2021 at 02:40 AM
+-- Generation Time: Dec 31, 2021 at 03:31 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -282,13 +282,13 @@ CREATE TABLE `teaches` (
 --
 
 INSERT INTO `teaches` (`course_id`, `who_is_teaching`) VALUES
-('CSE373', 'AUZ'),
-('MAT350', 'AUZ'),
 ('CSE311', 'MKN1'),
 ('CSE323', 'MKN1'),
 ('CSE332', 'MKN1'),
+('CSE373', 'AUZ'),
 ('MAT120', 'SMH2'),
-('MAT130', 'SMH2');
+('MAT130', 'SMH2'),
+('MAT350', 'AUZ');
 
 --
 -- Indexes for dumped tables
@@ -372,7 +372,7 @@ ALTER TABLE `taking`
 -- Indexes for table `teaches`
 --
 ALTER TABLE `teaches`
-  ADD PRIMARY KEY (`course_id`),
+  ADD PRIMARY KEY (`course_id`,`who_is_teaching`) USING BTREE,
   ADD KEY `who_is_teaching` (`who_is_teaching`);
 
 --

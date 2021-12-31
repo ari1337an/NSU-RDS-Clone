@@ -3,14 +3,14 @@
 require 'app.php'; // load the application
 
 
-if(USERS::isLogged()){
-    if(USERS::isLoggedAdmin()){
+if (USERS::isLogged()) {
+    if (USERS::isLoggedAdmin()) {
         header("Location: ./admin/index.php");
         exit;
-    }else if(USERS::isLoggedStudent()){
+    } else if (USERS::isLoggedStudent()) {
         header("Location: ./student/index.php");
         exit;
-    }else if(USERS::isLoggedFaculty()){
+    } else if (USERS::isLoggedFaculty()) {
         header("Location: ./faculty/index.php");
         exit;
     }
@@ -45,7 +45,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     if (trying_to_login_student($username)) {
 
-       
+
         $result = $APP_DB->query("SELECT count(*) as count FROM students WHERE username='$username' AND password='$password';");
         $how_many = $result->fetch_object()->count;
 
@@ -93,7 +93,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             echo "Authentication Error!";
         }
     }
-} 
+}
 
 // Define the Template Variables
 $template_vars["get_hierarchy"] = "./"; // take the script to the main hierarchy
@@ -116,9 +116,6 @@ $template_vars["get_hierarchy"] = "./"; // take the script to the main hierarchy
 <body>
     <?php include 'template/header.php'; ?>
 
-    <!-- just to check if the subheader works -->
-    <?php include 'template/sub_header.php'; ?> 
-
     <div class="login-center">
         <h3>NSU Portal: Login</h3>
         <form action="index.php" method="post">
@@ -133,7 +130,7 @@ $template_vars["get_hierarchy"] = "./"; // take the script to the main hierarchy
             <input type="submit" value="Login">
         </form>
     </div>
-    
+
 </body>
 
 </html>

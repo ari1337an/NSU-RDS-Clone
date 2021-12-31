@@ -38,7 +38,7 @@ if (!USERS::isLoggedAdmin()) {
             <form action="edit_faculty_profile.php" method="post">
                 <?php
                 $result = $APP_DB->query("
-    SELECT * from faculty_profile where initial='" . $_GET['faculty_initial'] . "';
+    SELECT * from faculty_profile where initial='" . $_GET['initial'] . "';
 ");
 
                 if (mysqli_num_rows($result) > 0) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2021 at 05:50 PM
+-- Generation Time: Dec 31, 2021 at 02:40 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `ID` int(5) NOT NULL,
   `USERNAME` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PASSWORD` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -37,8 +36,8 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`ID`, `USERNAME`, `PASSWORD`) VALUES
-(1, 'admin', 'admin');
+INSERT INTO `admins` (`USERNAME`, `PASSWORD`) VALUES
+('admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -299,7 +298,7 @@ INSERT INTO `teaches` (`course_id`, `who_is_teaching`) VALUES
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`ID`),
+  ADD PRIMARY KEY (`USERNAME`) USING BTREE,
   ADD UNIQUE KEY `USERNAME` (`USERNAME`);
 
 --
@@ -375,16 +374,6 @@ ALTER TABLE `taking`
 ALTER TABLE `teaches`
   ADD PRIMARY KEY (`course_id`),
   ADD KEY `who_is_teaching` (`who_is_teaching`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

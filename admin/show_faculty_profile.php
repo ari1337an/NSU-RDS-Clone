@@ -94,7 +94,7 @@ if (!USERS::isLoggedAdmin()) {
                     }
                 }
                 ?>
-                <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['faculty_initial']; ?>">
+                <input type="hidden" name="form_submitted_for" value="<?php echo $_GET['initial']; ?>">
                 <input class="btn btn-green btn-green-create" type="submit" name="request_for_edit" value="Edit Profile">
         </div>
 
